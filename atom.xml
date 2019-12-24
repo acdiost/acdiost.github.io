@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Dawn</title>
+  
+  <subtitle>To be a better man!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://acdiost.github.io/"/>
+  <updated>2019-12-24T04:59:29.534Z</updated>
+  <id>https://acdiost.github.io/</id>
+  
+  <author>
+    <name>Dawn</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bacula</title>
+    <link href="https://acdiost.github.io/Bacula.html"/>
+    <id>https://acdiost.github.io/Bacula.html</id>
+    <published>2019-12-24T03:49:44.000Z</published>
+    <updated>2019-12-24T04:59:29.534Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Bacula"><a href="#Bacula" class="headerlink" title="Bacula"></a>Bacula</h1><hr><p><a href="https://nchc.dl.sourceforge.net/project/bacula/bacula/9.4.4/bacula-9.4.4.tar.gz" target="_blank" rel="noopener">bacula下载链接</a></p><p><a href="https://sourceforge.net/projects/bacula/files/" target="_blank" rel="noopener">所有版本下载</a></p><p><a href="https://www.bacula.org/9.4.x-manuals/en/main/Index.html" target="_blank" rel="noopener">官方文档</a></p><h2 id="服务端安装bacula"><a href="#服务端安装bacula" class="headerlink" title="服务端安装bacula"></a>服务端安装bacula</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://www.bacula.org/9.4.x-manuals/en/main/Installing_Bacula.html#6568</span></span><br><span class="line"><span class="comment"># debian </span></span><br><span class="line"><span class="comment"># sudo apt-get install gcc g++ qt5-qmake qt5-default</span></span><br><span class="line"></span><br><span class="line">yum install -y gcc gcc-c++ mysql-devel</span><br><span class="line">tar -zxf bacula-9.4.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> bacula-9.4.4/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方建议：</span></span><br><span class="line">./configure \</span><br><span class="line">  --<span class="built_in">enable</span>-smartalloc \</span><br><span class="line">  --sbindir=/opt/bacula/bin \</span><br><span class="line">  --sysconfdir=/opt/bacula/etc \</span><br><span class="line">  --with-pid-dir=/opt/bacula/working \</span><br><span class="line">  --with-subsys-dir=/opt/bacula/working \</span><br><span class="line">  --with-working-dir=/opt/bacula/working</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">./configure \</span><br><span class="line"><span class="comment"># 有助于检测内存泄漏</span></span><br><span class="line">--<span class="built_in">enable</span>-smartalloc \</span><br><span class="line"><span class="comment"># 启用mysql </span></span><br><span class="line">--with-mysql \</span><br><span class="line"><span class="comment"># 启用构建小巧轻便的Readline替换例程</span></span><br><span class="line">--<span class="built_in">enable</span>-conio \</span><br><span class="line"><span class="comment"># 启用Bacula图形化管理工具BAT</span></span><br><span class="line">--<span class="built_in">enable</span>-bat  \</span><br><span class="line"><span class="comment"># 启用托盘监控工具</span></span><br><span class="line">--<span class="built_in">enable</span>-tray-monitor</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><hr><h2 id="客户端安装bacula"><a href="#客户端安装bacula" class="headerlink" title="客户端安装bacula"></a>客户端安装bacula</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++</span><br><span class="line">tar -zxf bacula-9.4.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> bacula-9.4.4/</span><br><span class="line"></span><br><span class="line">./configure  --<span class="built_in">enable</span>-client-only --<span class="built_in">enable</span>-smartalloc</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><hr><h2 id="创建备份还原目录"><a href="#创建备份还原目录" class="headerlink" title="创建备份还原目录"></a>创建备份还原目录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /bacula/backup /bacula/restore</span><br><span class="line">sudo chown -R dawn:dawn /bacula/</span><br><span class="line">sudo chmod -R 700 /bacula/</span><br></pre></td></tr></table></figure><hr><h2 id="数据库初始化"><a href="#数据库初始化" class="headerlink" title="数据库初始化"></a>数据库初始化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="built_in">cd</span> /etc/bacula/</span><br><span class="line">分配权限</span><br><span class="line">./grant_mysql_privileges -u root -p</span><br><span class="line">创建数据库</span><br><span class="line">./create_mysql_database -u root -p</span><br><span class="line">创建表</span><br><span class="line">./make_mysql_tables -u root -p</span><br></pre></td></tr></table></figure><hr><h2 id="配置文件配置"><a href="#配置文件配置" class="headerlink" title="配置文件配置"></a>配置文件配置</h2><blockquote><p>Bacula的备份和恢复工作由下面几个部分完成<br>（1）Director Daemon主要是控制端，控制存储，要备份的服务器，运行依赖于数据库，推荐使用MySQL<br>（2）Storage Daemon主要是文件存储，所有的备份都会存储在这里，恢复的时候从这里取文件<br>（3）File Daemon就是在客户端运行的进程，备份的时候传出文件，恢复的时候接收文件<br>（4）Console是连接Director进行控制的<br>（5）Monitor是监控备份过程的，完成或失败会有log和发送email，失败的日志很详细</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line"><span class="built_in">cd</span> /etc/bacula/</span><br><span class="line">vi bacula-dir.conf</span><br></pre></td></tr></table></figure><hr><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Bacula&quot;&gt;&lt;a href=&quot;#Bacula&quot; class=&quot;headerlink&quot; title=&quot;Bacula&quot;&gt;&lt;/a&gt;Bacula&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;&lt;a href=&quot;https://nchc.dl.sourceforge.net/project/
+      
+    
+    </summary>
+    
+      <category term="工作" scheme="https://acdiost.github.io/categories/%E5%B7%A5%E4%BD%9C/"/>
+    
+    
+      <category term="bacula" scheme="https://acdiost.github.io/tags/bacula/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql远程链接配置</title>
+    <link href="https://acdiost.github.io/mysql%E8%BF%9C%E7%A8%8B%E9%93%BE%E6%8E%A5%E9%85%8D%E7%BD%AE.html"/>
+    <id>https://acdiost.github.io/mysql远程链接配置.html</id>
+    <published>2019-12-23T03:00:57.000Z</published>
+    <updated>2019-12-24T04:59:29.543Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>docker需要链接数据库，发现设置127.0.0.1无法链接</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server</span><br><span class="line"># python相关依赖</span><br><span class="line">sudo apt-get install libmysqlclient-dev python3-dev</span><br><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure><h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p><code>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf</code><br>将<code>bind-address           = 127.0.0.1</code>注释掉<br><code>skip-external-locking</code>后面新增一行字符集编码<code>character-set-server=utf8</code></p><p>重启mysql服务<br><code>sudo /etc/init.d/mysql restart</code></p><p><strong>检查防火墙</strong></p><p>修改用户信息<br><code>create user &#39;dawn&#39;@&#39;%&#39; identified by &#39;密码&#39;;</code><br><code>grant all privileges on *.* to &#39;dawn&#39;@&#39;%&#39; identified by &#39;密码&#39;with grant option;</code><br><code>flush privileges;</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h3&gt;&lt;p&gt;docker需要链接数据库，发现设置127.0.0.1无法链接&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;h
+      
+    
+    </summary>
+    
+      <category term="mysql" scheme="https://acdiost.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://acdiost.github.io/tags/mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>每日必应图片</title>
+    <link href="https://acdiost.github.io/%E6%AF%8F%E6%97%A5%E5%BF%85%E5%BA%94%E5%9B%BE%E7%89%87.html"/>
+    <id>https://acdiost.github.io/每日必应图片.html</id>
+    <published>2019-12-22T03:58:45.000Z</published>
+    <updated>2019-12-24T04:59:29.545Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="每日必应图片API"><a href="#每日必应图片API" class="headerlink" title="每日必应图片API"></a>每日必应图片API</h3><p><code>https://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1</code><br>提取返回的图片url设置为该文章cover</p><p><code>format=js</code>表示格式为json，<code>idx=0</code>表示今天，<code>n=1</code>表示返回的数量</p><p>python代码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="comment"># @Time    : 2019/12/22 下午2:10</span></span><br><span class="line"><span class="comment"># @Author  : dawn</span></span><br><span class="line"><span class="comment"># @File    : bing.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">bing = <span class="string">'https://www.bing.com'</span></span><br><span class="line">url = <span class="string">'https://www.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1'</span></span><br><span class="line">img = requests.get(url).json().get(<span class="string">'images'</span>)[<span class="number">0</span>][<span class="string">'url'</span>].replace(<span class="string">'&amp;pid=hp'</span>, <span class="string">''</span>)</span><br><span class="line">print(bing + img)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;每日必应图片API&quot;&gt;&lt;a href=&quot;#每日必应图片API&quot; class=&quot;headerlink&quot; title=&quot;每日必应图片API&quot;&gt;&lt;/a&gt;每日必应图片API&lt;/h3&gt;&lt;p&gt;&lt;code&gt;https://www.bing.com/HPImageArchive.
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://acdiost.github.io/categories/Python/"/>
+    
+    
+      <category term="每日必应" scheme="https://acdiost.github.io/tags/%E6%AF%8F%E6%97%A5%E5%BF%85%E5%BA%94/"/>
+    
+      <category term="图片" scheme="https://acdiost.github.io/tags/%E5%9B%BE%E7%89%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS更换阿里云源</title>
+    <link href="https://acdiost.github.io/CentOS%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E4%BA%91%E6%BA%90.html"/>
+    <id>https://acdiost.github.io/CentOS更换阿里云源.html</id>
+    <published>2019-12-22T03:45:11.000Z</published>
+    <updated>2019-12-24T04:59:29.538Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="备份原源"><a href="#备份原源" class="headerlink" title="备份原源"></a>备份原源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure><h3 id="下载阿里源文件"><a href="#下载阿里源文件" class="headerlink" title="下载阿里源文件"></a>下载阿里源文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure><h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;备份原源&quot;&gt;&lt;a href=&quot;#备份原源&quot; class=&quot;headerlink&quot; title=&quot;备份原源&quot;&gt;&lt;/a&gt;备份原源&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+      <category term="CentOS" scheme="https://acdiost.github.io/categories/CentOS/"/>
+    
+    
+      <category term="CentOS" scheme="https://acdiost.github.io/tags/CentOS/"/>
+    
+      <category term="阿里云" scheme="https://acdiost.github.io/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HelloHexo</title>
+    <link href="https://acdiost.github.io/HelloHexo.html"/>
+    <id>https://acdiost.github.io/HelloHexo.html</id>
+    <published>2019-07-10T13:09:15.000Z</published>
+    <updated>2019-12-24T04:59:29.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello hexo!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Hello hexo!&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="https://acdiost.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
