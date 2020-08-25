@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CentOS磁盘扩容 - Dawn</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="acdiost,"> 
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="acdiost,dawn,"> 
     <meta name="description" content="dawn,to be a better man!,
 今天，同事让分一个21T的磁盘进行扩容。将2T容量放在根分区，其余容量分给/data/目录下。
 总结：
@@ -19,36 +19,37 @@
     <meta name="author" content="Dawn"> 
     <link rel="alternative" href="atom.xml" title="Dawn" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
-    <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-    <!--<script>
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
          (adsbygoogle = window.adsbygoogle || []).push({
               google_ad_client: "ca-pub-8691406134231910",
               enable_page_level_ads: true
          });
-    </script>-->
-    <!--<script async custom-element="amp-auto-ads"
+    </script>
+    <script async custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>-->
-</head>
-</html>
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">Dawn</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;" data-url="https://acdiost.github.io"></a>
-    <div title="播放/暂停" class="icon-play"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://acdiost.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">CentOS磁盘扩容</h3>
     <div class="social">
-        <!--<div class="like-icon">-->
-            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-        <!--</div>-->
         <div>
             <div class="share">
-                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
             <div id="qr"></div>
         </div>
@@ -63,7 +64,7 @@
         <div class="stuff">
             <span>十二月 26, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CentOS/">CentOS</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/CentOS/" rel="tag">CentOS</a></li></ul>
 
 
         </div>
@@ -102,6 +103,7 @@
         </div>
         
     <div id='gitalk-container' class="comment link"
+		data-enable='true'
         data-ae='false'
         data-ci='80c0a1731898dd4dd04f'
         data-cs='20ef950e67a9b95b6698b227c0717df682a83803'
@@ -115,7 +117,7 @@
     </div>
     
         <div class='side'>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统信息"><span class="toc-number">1.</span> <span class="toc-text">操作系统信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看磁盘使用情况"><span class="toc-number">2.</span> <span class="toc-text">查看磁盘使用情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lsblk列出磁盘信息"><span class="toc-number">3.</span> <span class="toc-text">lsblk列出磁盘信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fdisk-dev-sdb对磁盘进行分区"><span class="toc-number">4.</span> <span class="toc-text">fdisk /dev/sdb对磁盘进行分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改分区号"><span class="toc-number">5.</span> <span class="toc-text">修改分区号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将磁盘格式化为xfs"><span class="toc-number">6.</span> <span class="toc-text">将磁盘格式化为xfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩容分区"><span class="toc-number">7.</span> <span class="toc-text">扩容分区</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">1.</span> <span class="toc-text">操作系统信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-number">2.</span> <span class="toc-text">查看磁盘使用情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lsblk%E5%88%97%E5%87%BA%E7%A3%81%E7%9B%98%E4%BF%A1%E6%81%AF"><span class="toc-number">3.</span> <span class="toc-text">lsblk列出磁盘信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fdisk-dev-sdb%E5%AF%B9%E7%A3%81%E7%9B%98%E8%BF%9B%E8%A1%8C%E5%88%86%E5%8C%BA"><span class="toc-number">4.</span> <span class="toc-text">fdisk &#x2F;dev&#x2F;sdb对磁盘进行分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%88%86%E5%8C%BA%E5%8F%B7"><span class="toc-number">5.</span> <span class="toc-text">修改分区号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%B8%BAxfs"><span class="toc-number">6.</span> <span class="toc-text">将磁盘格式化为xfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9%E5%88%86%E5%8C%BA"><span class="toc-number">7.</span> <span class="toc-text">扩容分区</span></a></li></ol>	
         </div>
     
 </div>
@@ -124,14 +126,23 @@
     </div>
 </div>
 </body>
+
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -180,6 +191,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

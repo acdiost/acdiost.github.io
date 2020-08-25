@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://acdiost.github.io/"/>
-  <updated>2020-03-04T14:34:48.953Z</updated>
+  <updated>2020-08-25T14:40:57.123Z</updated>
   <id>https://acdiost.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nfs部署</title>
+    <link href="https://acdiost.github.io/nfs%E9%83%A8%E7%BD%B2.html"/>
+    <id>https://acdiost.github.io/nfs部署.html</id>
+    <published>2020-08-25T14:01:19.000Z</published>
+    <updated>2020-08-25T14:40:57.123Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>NFS就是Network File System的缩写，它最大的功能就是可以通过网络，让不同的机器、不同的操作系统可以共享彼此的文件。</p></blockquote><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install -y nfs-utils</span><br><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl <span class="built_in">enable</span> nfs</span><br></pre></td></tr></table></figure><h2 id="配置文件-etc-exports"><a href="#配置文件-etc-exports" class="headerlink" title="配置文件 /etc/exports"></a>配置文件 <code>/etc/exports</code></h2><p>目录 IP地址(权限)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;nfs</span><br><span class="line">chown -R nfsnobody.nfsnobody &#x2F;nfs</span><br><span class="line"></span><br><span class="line">echo &#39;&#x2F;nfs 192.168.1.1(rw,sync)&#39; &gt;&gt; &#x2F;etc&#x2F;exports</span><br><span class="line"></span><br><span class="line">systemctl start rpcbind</span><br><span class="line">systemctl start nfs</span><br></pre></td></tr></table></figure><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><table><thead><tr><th align="center">参数</th><th align="center">作用</th></tr></thead><tbody><tr><td align="center">ro</td><td align="center">只读</td></tr><tr><td align="center">rw</td><td align="center">读写</td></tr><tr><td align="center">root_squash</td><td align="center">当NFS客户端以root管理员访问时，映射为NFS服务器的匿名用户</td></tr><tr><td align="center">no_root_squash</td><td align="center">当NFS客户端以root管理员访问时，映射为NFS服务器的root管理员</td></tr><tr><td align="center">all_squash</td><td align="center">无论NFS客户端使用什么账户访问，均映射为NFS服务器的匿名用户</td></tr><tr><td align="center">sync</td><td align="center">同时将数据写入到内存与硬盘中，保证不丢失数据</td></tr><tr><td align="center">async</td><td align="center">优先将数据保存到内存，然后再写入硬盘；这样效率更高，但可能会丢失数据</td></tr><tr><td align="center">anonuid=xxx</td><td align="center">将远程访问的所有用户都映射为匿名用户，并指定该用户为本地用户（UID=xxx）</td></tr><tr><td align="center">anongid=xxx</td><td align="center">将远程访问的所有用户组都映射为匿名用户组账户，并指定该匿名用户组账户为本地用户组账户（GID=xxx）</td></tr><tr><td align="center">secure</td><td align="center">限制客户端只能从小于1024的tcp/ip端口连接nfs服务器（默认设置）</td></tr><tr><td align="center">insecure</td><td align="center">允许客户端从大于1024的tcp/ip端口连接服务器</td></tr></tbody></table><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><blockquote><p>当使用 <code>df</code>,<code>ls</code> 命令无法加载磁盘信息或者列出目录，多半是nfs服务未启动或者连接失败导致； <code>dmesg</code> 可查看错误。</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y nfs-utils</span><br><span class="line"></span><br><span class="line">showmount -e 192.168.1.1</span><br><span class="line">mount -t 192.168.1.1:/nfs /nfs</span><br></pre></td></tr></table></figure><h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /nfs</span><br></pre></td></tr></table></figure><h2 id="自动挂载"><a href="#自动挂载" class="headerlink" title="自动挂载"></a>自动挂载</h2><p>编辑 <code>/etc/fstab</code> 添加如下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.1:&#x2F;nfs &#x2F;nfs nfs defaults 0 0</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;NFS就是Network File System的缩写，它最大的功能就是可以通过网络，让不同的机器、不同的操作系统可以共享彼此的文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;heade
+      
+    
+    </summary>
+    
+      <category term="CentOS" scheme="https://acdiost.github.io/categories/CentOS/"/>
+    
+    
+      <category term="NFS" scheme="https://acdiost.github.io/tags/NFS/"/>
+    
+  </entry>
   
   <entry>
     <title>vsftpd学习使用</title>
@@ -44,29 +72,34 @@
   </entry>
   
   <entry>
-    <title>docker安装</title>
+    <title>docker、nodejs安装</title>
     <link href="https://acdiost.github.io/docker%E5%AE%89%E8%A3%85.html"/>
     <id>https://acdiost.github.io/docker安装.html</id>
     <published>2020-01-18T11:54:36.000Z</published>
-    <updated>2020-03-04T12:48:16.379Z</updated>
+    <updated>2020-08-25T15:52:56.029Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><p>安装docker，任选其一，完成后将当前用户加入到docker组，便不需使用sudo命令了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 官方</span><br><span class="line">curl -k -ssl https://get.docker.com | sudo sh</span><br><span class="line"># 阿里云</span><br><span class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</span><br><span class="line"># daocloud</span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br><span class="line"></span><br><span class="line"># 当前用户加入到docker组</span><br><span class="line">sudo usermod -aG docker $&#123;USER&#125;</span><br></pre></td></tr></table></figure></li><li><p>镜像下载加速，新建修改daemon将源换成国内的<br><code>vi /etc/docker/daemon.json</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://你的id.mirror.aliyuncs.com&quot;],</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://registry.docker-cn.com&quot;],</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://docker.mirrors.ustc.edu.cn&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>将2375端口开启，让idea、goland和pycharm可以访问使用。方式不止这一种</p></li></ol><p><code>vi /lib/systemd/system/docker.service</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock</span><br></pre></td></tr></table></figure><ol start="4"><li><p>重启docker</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></li><li><p>File–&gt;settings–&gt;build,execution,deployment–&gt;docker–&gt;TCP socket填入:<code>tcp://127.0.0.1:2375</code></p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><ol><li><p>安装docker，任选其一，完成后将当前用户加入到docker组，便不需使用sudo命令了</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 官方</span></span><br><span class="line">curl -k -ssl https://get.docker.com | sudo sh</span><br><span class="line"><span class="comment"># 阿里云</span></span><br><span class="line">curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -</span><br><span class="line"><span class="comment"># daocloud</span></span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前用户加入到docker组</span></span><br><span class="line">sudo usermod -aG docker <span class="variable">$&#123;USER&#125;</span></span><br></pre></td></tr></table></figure></li><li><p>镜像下载加速，新建修改daemon将源换成国内的<br><code>vi /etc/docker/daemon.json</code></p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://你的id.mirror.aliyuncs.com&quot;</span>],</span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://registry.docker-cn.com&quot;</span>],</span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span>: [<span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>将2375端口开启，让idea、goland和pycharm可以访问使用。方式不止这一种</p></li></ol><p><code>vi /lib/systemd/system/docker.service</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;dockerd -H fd:&#x2F;&#x2F; -H tcp:&#x2F;&#x2F;0.0.0.0:2375 --containerd&#x3D;&#x2F;run&#x2F;containerd&#x2F;containerd.sock</span><br></pre></td></tr></table></figure><ol start="4"><li><p>重启docker</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure></li><li><p>File–&gt;settings–&gt;build,execution,deployment–&gt;docker–&gt;TCP socket填入:<code>tcp://127.0.0.1:2375</code></p></li></ol><h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -</span><br><span class="line"></span><br><span class="line">yum install -y nodejs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> cnpm=<span class="string">&quot;npm --registry=https://registry.npm.taobao.org \</span></span><br><span class="line"><span class="string">--cache=<span class="variable">$HOME</span>/.npm/.cache/cnpm \</span></span><br><span class="line"><span class="string">--disturl=https://npm.taobao.org/dist \</span></span><br><span class="line"><span class="string">--userconfig=<span class="variable">$HOME</span>/.cnpmrc&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;安装docker，任选其一，完成后将当前用户加入到docker组，便不需使用sudo命令了&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class
+        &lt;h2 id=&quot;docker&quot;&gt;&lt;a href=&quot;#docker&quot; class=&quot;headerlink&quot; title=&quot;docker&quot;&gt;&lt;/a&gt;docker&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装docker，任选其一，完成后将当前用户加入到docker组，便不需使用sudo命令了
       
     
     </summary>
     
       <category term="docker" scheme="https://acdiost.github.io/categories/docker/"/>
     
+      <category term="nodejs" scheme="https://acdiost.github.io/categories/docker/nodejs/"/>
+    
     
       <category term="docker" scheme="https://acdiost.github.io/tags/docker/"/>
+    
+      <category term="nodejs" scheme="https://acdiost.github.io/tags/nodejs/"/>
+    
+      <category term="npm" scheme="https://acdiost.github.io/tags/npm/"/>
     
   </entry>
   

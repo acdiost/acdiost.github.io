@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>nfs部署 - Dawn</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="acdiost,dawn,"> 
+    <meta name="description" content="dawn,to be a better man!,
+NFS就是Network File System的缩写，它最大的功能就是可以通过网络，让不同的机器、不同的操作系统可以共享彼此的文件。
+
+安装123sudo dnf install -y nfs-,"> 
+    <meta name="author" content="Dawn"> 
+    <link rel="alternative" href="atom.xml" title="Dawn" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dawn</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://acdiost.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">nfs部署</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">nfs部署</h1>
+        <div class="stuff">
+            <span>八月 25, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/NFS/" rel="tag">NFS</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>NFS就是Network File System的缩写，它最大的功能就是可以通过网络，让不同的机器、不同的操作系统可以共享彼此的文件。</p>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install -y nfs-utils</span><br><span class="line">systemctl <span class="built_in">enable</span> rpcbind</span><br><span class="line">systemctl <span class="built_in">enable</span> nfs</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件-etc-exports"><a href="#配置文件-etc-exports" class="headerlink" title="配置文件 /etc/exports"></a>配置文件 <code>/etc/exports</code></h2><p>目录 IP地址(权限)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;nfs</span><br><span class="line">chown -R nfsnobody.nfsnobody &#x2F;nfs</span><br><span class="line"></span><br><span class="line">echo &#39;&#x2F;nfs 192.168.1.1(rw,sync)&#39; &gt;&gt; &#x2F;etc&#x2F;exports</span><br><span class="line"></span><br><span class="line">systemctl start rpcbind</span><br><span class="line">systemctl start nfs</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ro</td>
+<td align="center">只读</td>
+</tr>
+<tr>
+<td align="center">rw</td>
+<td align="center">读写</td>
+</tr>
+<tr>
+<td align="center">root_squash</td>
+<td align="center">当NFS客户端以root管理员访问时，映射为NFS服务器的匿名用户</td>
+</tr>
+<tr>
+<td align="center">no_root_squash</td>
+<td align="center">当NFS客户端以root管理员访问时，映射为NFS服务器的root管理员</td>
+</tr>
+<tr>
+<td align="center">all_squash</td>
+<td align="center">无论NFS客户端使用什么账户访问，均映射为NFS服务器的匿名用户</td>
+</tr>
+<tr>
+<td align="center">sync</td>
+<td align="center">同时将数据写入到内存与硬盘中，保证不丢失数据</td>
+</tr>
+<tr>
+<td align="center">async</td>
+<td align="center">优先将数据保存到内存，然后再写入硬盘；这样效率更高，但可能会丢失数据</td>
+</tr>
+<tr>
+<td align="center">anonuid=xxx</td>
+<td align="center">将远程访问的所有用户都映射为匿名用户，并指定该用户为本地用户（UID=xxx）</td>
+</tr>
+<tr>
+<td align="center">anongid=xxx</td>
+<td align="center">将远程访问的所有用户组都映射为匿名用户组账户，并指定该匿名用户组账户为本地用户组账户（GID=xxx）</td>
+</tr>
+<tr>
+<td align="center">secure</td>
+<td align="center">限制客户端只能从小于1024的tcp/ip端口连接nfs服务器（默认设置）</td>
+</tr>
+<tr>
+<td align="center">insecure</td>
+<td align="center">允许客户端从大于1024的tcp/ip端口连接服务器</td>
+</tr>
+</tbody></table>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><blockquote>
+<p>当使用 <code>df</code>,<code>ls</code> 命令无法加载磁盘信息或者列出目录，多半是nfs服务未启动或者连接失败导致； <code>dmesg</code> 可查看错误。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y nfs-utils</span><br><span class="line"></span><br><span class="line">showmount -e 192.168.1.1</span><br><span class="line">mount -t 192.168.1.1:/nfs /nfs</span><br></pre></td></tr></table></figure>
+
+<h2 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umount /nfs</span><br></pre></td></tr></table></figure>
+
+<h2 id="自动挂载"><a href="#自动挂载" class="headerlink" title="自动挂载"></a>自动挂载</h2><p>编辑 <code>/etc/fstab</code> 添加如下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.1:&#x2F;nfs &#x2F;nfs nfs defaults 0 0</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/22228465.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci='80c0a1731898dd4dd04f'
+        data-cs='20ef950e67a9b95b6698b227c0717df682a83803'
+        data-r='acdiost.github.io'
+        data-o='acdiost'
+        data-a='acdiost'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-etc-exports"><span class="toc-number">2.</span> <span class="toc-text">配置文件 &#x2F;etc&#x2F;exports</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">3.</span> <span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">卸载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">5.</span> <span class="toc-text">自动挂载</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
