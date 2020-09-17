@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hans" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>nexus - Dawn</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="acdiost,dawn,"> 
+    <meta name="description" content="dawn,to be a better man!,使用Nexus部署私有仓库支持如下及更多
+
+maven
+apt
+bower
+docker
+go
+npm
+pypi
+yum
+ruby
+
+
+hosted：本地仓库，通常我们会部署自己的构件到这一类型的仓,"> 
+    <meta name="author" content="Dawn"> 
+    <link rel="alternative" href="atom.xml" title="Dawn" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Dawn</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://acdiost.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">nexus</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">nexus</h1>
+        <div class="stuff">
+            <span>九月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/nexus/" rel="tag">nexus</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="使用Nexus部署私有仓库"><a href="#使用Nexus部署私有仓库" class="headerlink" title="使用Nexus部署私有仓库"></a>使用Nexus部署私有仓库</h2><p>支持如下及更多</p>
+<ul>
+<li>maven</li>
+<li>apt</li>
+<li>bower</li>
+<li>docker</li>
+<li>go</li>
+<li>npm</li>
+<li>pypi</li>
+<li>yum</li>
+<li>ruby</li>
+</ul>
+<blockquote>
+<p>hosted：本地仓库，通常我们会部署自己的构件到这一类型的仓库。比如公司的第二方库。<br>proxy：代理仓库，它们被用来代理远程的公共仓库，如maven中央仓库。<br>group：仓库组，用来合并多个hosted/proxy仓库。<br>virtual: 虚拟仓库类型（基本不用）</p>
+</blockquote>
+<hr>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /nexus-data</span><br><span class="line">docker run -d -p 8081:8081 --restart always --name nexus -v /nexus-data:/nexus-data sonatype/nexus3</span><br><span class="line">docker <span class="built_in">exec</span> -t nexus cat /nexus-data/admin.password</span><br></pre></td></tr></table></figure>
+
+<h3 id="建立包存储目录"><a href="#建立包存储目录" class="headerlink" title="建立包存储目录"></a>建立包存储目录</h3><img src="/nexus/nexus2.png" class title="nexus">
+<img src="/nexus/nexus3.png" class title="nexus">
+
+<h3 id="配置maven仓库"><a href="#配置maven仓库" class="headerlink" title="配置maven仓库"></a>配置maven仓库</h3><ol>
+<li>存储默认使用default</li>
+<li>创建maven2proxy<br><a href="http://maven.aliyun.com/nexus/content/groups/public">http://maven.aliyun.com/nexus/content/groups/public</a></li>
+</ol>
+<p><img src="/nexus/nexus9.png" alt="nexus"></p>
+<ol start="3">
+<li><p>在maven-public添加maven-aliyun<br><img src="/nexus/nexus10.png" alt="nexus"></p>
+</li>
+<li><p>配置 maven-release、maven-snapshots，允许上传Jar包<br><img src="/nexus/nexus11.png" alt="nexus"></p>
+</li>
+<li><p>maven settings文件</p>
+</li>
+</ol>
+<blockquote>
+<p>yu_ming-ip换成自己的域名或IP，修改server的密码</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">    &lt;pluginGroup&gt;com.your.plugins&lt;/pluginGroup&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    &lt;proxy&gt;</span></span><br><span class="line"><span class="comment">      &lt;id&gt;optional&lt;/id&gt;</span></span><br><span class="line"><span class="comment">      &lt;active&gt;true&lt;/active&gt;</span></span><br><span class="line"><span class="comment">      &lt;protocol&gt;http&lt;/protocol&gt;</span></span><br><span class="line"><span class="comment">      &lt;username&gt;proxyuser&lt;/username&gt;</span></span><br><span class="line"><span class="comment">      &lt;password&gt;proxypass&lt;/password&gt;</span></span><br><span class="line"><span class="comment">      &lt;host&gt;proxy.host.net&lt;/host&gt;</span></span><br><span class="line"><span class="comment">      &lt;port&gt;80&lt;/port&gt;</span></span><br><span class="line"><span class="comment">      &lt;nonProxyHosts&gt;local.net|some.host.com&lt;/nonProxyHosts&gt;</span></span><br><span class="line"><span class="comment">    &lt;/proxy&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Another sample, using keys to authenticate.</span></span><br><span class="line"><span class="comment">    &lt;server&gt;</span></span><br><span class="line"><span class="comment">      &lt;id&gt;siteServer&lt;/id&gt;</span></span><br><span class="line"><span class="comment">      &lt;privateKey&gt;/path/to/private/key&lt;/privateKey&gt;</span></span><br><span class="line"><span class="comment">      &lt;passphrase&gt;optional; leave empty if not used.&lt;/passphrase&gt;</span></span><br><span class="line"><span class="comment">    &lt;/server&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>admin<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/repository/maven-public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">profile</span>&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!--profile的id--&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span>    </span><br><span class="line">      <span class="tag">&lt;<span class="name">repository</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>central<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/repository/maven-public<span class="tag">&lt;/<span class="name">url</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">      <span class="tag">&lt;/<span class="name">repository</span>&gt;</span>   </span><br><span class="line">      <span class="tag">&lt;<span class="name">repository</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/repository/maven-releases<span class="tag">&lt;/<span class="name">url</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">      <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">repository</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/repository/maven-snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span>    </span><br><span class="line">      <span class="tag">&lt;/<span class="name">repository</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span>   </span><br><span class="line">     <span class="comment">&lt;!-- 插件仓库，maven 的运行依赖插件，也需要从私服下载插件 --&gt;</span> </span><br><span class="line">      <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span>   </span><br><span class="line">       <span class="comment">&lt;!-- 插件仓库的 id 不允许重复，如果重复后边配置会覆盖前边 --&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>public<span class="tag">&lt;/<span class="name">id</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Public Repositories<span class="tag">&lt;/<span class="name">name</span>&gt;</span>   </span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/repository/maven-public<span class="tag">&lt;/<span class="name">url</span>&gt;</span>   </span><br><span class="line">      <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span>   </span><br><span class="line">  <span class="tag">&lt;/<span class="name">profile</span>&gt;</span> </span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    &lt;profile&gt;</span></span><br><span class="line"><span class="comment">      &lt;id&gt;jdk-1.4&lt;/id&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      &lt;activation&gt;</span></span><br><span class="line"><span class="comment">        &lt;jdk&gt;1.4&lt;/jdk&gt;</span></span><br><span class="line"><span class="comment">      &lt;/activation&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      &lt;repositories&gt;</span></span><br><span class="line"><span class="comment">        &lt;repository&gt;</span></span><br><span class="line"><span class="comment">          &lt;id&gt;jdk14&lt;/id&gt;</span></span><br><span class="line"><span class="comment">          &lt;name&gt;Repository for JDK 1.4 builds&lt;/name&gt;</span></span><br><span class="line"><span class="comment">          &lt;url&gt;http://www.myhost.com/maven/jdk14&lt;/url&gt;</span></span><br><span class="line"><span class="comment">          &lt;layout&gt;default&lt;/layout&gt;</span></span><br><span class="line"><span class="comment">          &lt;snapshotPolicy&gt;always&lt;/snapshotPolicy&gt;</span></span><br><span class="line"><span class="comment">        &lt;/repository&gt;</span></span><br><span class="line"><span class="comment">      &lt;/repositories&gt;</span></span><br><span class="line"><span class="comment">    &lt;/profile&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">     | &lt;plugin&gt;</span></span><br><span class="line"><span class="comment">     |   &lt;groupId&gt;org.myco.myplugins&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">     |   &lt;artifactId&gt;myplugin&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">     |</span></span><br><span class="line"><span class="comment">     |   &lt;configuration&gt;</span></span><br><span class="line"><span class="comment">     |     &lt;tomcatLocation&gt;$&#123;tomcatPath&#125;&lt;/tomcatLocation&gt;</span></span><br><span class="line"><span class="comment">     |   &lt;/configuration&gt;</span></span><br><span class="line"><span class="comment">     | &lt;/plugin&gt;</span></span><br><span class="line"><span class="comment">     | ...</span></span><br><span class="line"><span class="comment">    &lt;profile&gt;</span></span><br><span class="line"><span class="comment">      &lt;id&gt;env-dev&lt;/id&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      &lt;activation&gt;</span></span><br><span class="line"><span class="comment">        &lt;property&gt;</span></span><br><span class="line"><span class="comment">          &lt;name&gt;target-env&lt;/name&gt;</span></span><br><span class="line"><span class="comment">          &lt;value&gt;dev&lt;/value&gt;</span></span><br><span class="line"><span class="comment">        &lt;/property&gt;</span></span><br><span class="line"><span class="comment">      &lt;/activation&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      &lt;properties&gt;</span></span><br><span class="line"><span class="comment">        &lt;tomcatPath&gt;/path/to/tomcat/instance&lt;/tomcatPath&gt;</span></span><br><span class="line"><span class="comment">      &lt;/properties&gt;</span></span><br><span class="line"><span class="comment">    &lt;/profile&gt;</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--要激活的profile id--&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">  &lt;activeProfiles&gt;</span></span><br><span class="line"><span class="comment">    &lt;activeProfile&gt;alwaysActiveProfile&lt;/activeProfile&gt;</span></span><br><span class="line"><span class="comment">    &lt;activeProfile&gt;anotherAlwaysActiveProfile&lt;/activeProfile&gt;</span></span><br><span class="line"><span class="comment">  &lt;/activeProfiles&gt;</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>发布项目到nexus的pom.xml配置</li>
+</ol>
+<p>在settings.xml中配置权限，其中id要与pom文件中的id一致</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Releases<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://&#123;yu_ming-ip&#125;/repository/maven-releases<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>snapshot<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>Snapshot<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://&#123;yu_ming-ip&#125;/repository/maven-snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用命令发布项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>在pom.xml指定nexus</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目的pom.xml文件中指定插件仓库</p>
+</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>nexus<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://yu_ming-ip:8081/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="9">
+<li><p>测试<br><img src="/nexus/nexus12.png" alt="nexus"></p>
+</li>
+<li><p>离线包上传<br>将jar包和pom文件一起传入即可</p>
+</li>
+</ol>
+<h3 id="配置apt仓库"><a href="#配置apt仓库" class="headerlink" title="配置apt仓库"></a>配置apt仓库</h3><ol>
+<li>创建ubuntu blob stores</li>
+<li>创建仓库选择apt(hosted)</li>
+<li>键入名称ubuntu</li>
+<li>分支Distribution 输入：focal,bionic,xenial,disco,eoan<br><img src="/nexus/nexus14.png" alt="nexus"></li>
+<li>signing key： 通过<code>gpg --export-secret-key --armor</code> 导出，并输入密码<br>在任意机器生成命令：<code>apt install rng-tools &amp;&amp; gpg --gen-key</code> ,一直回车再按提示输入相关信息<br><img src="/nexus/nexus15.png" alt="nexus"></li>
+</ol>
+<p><a href="https://mirror.tuna.tsinghua.edu.cn/ubuntu/">https://mirror.tuna.tsinghua.edu.cn/ubuntu/</a><br><img src="/nexus/nexus13.png" alt="nexus"></p>
+<ol start="6">
+<li>Ubuntu的软件源配置文件是 <code>/etc/apt/sources.list</code>。将系统自带的该文件做个备份，将该文件替换为下面内容:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># bionic为1804，按操作系统不同更改</span></span><br><span class="line">deb http://yu_ming-ip:8081/repository/ubuntuproxy/ bionic main restricted universe multiverse</span><br><span class="line">deb http://yu_ming-ip:8081/repository/ubuntuproxy/ bionic-updates main restricted universe multiverse</span><br><span class="line">deb http://yu_ming-ip:8081/repository/ubuntuproxy/ bionic-backports main restricted universe multiverse</span><br><span class="line">deb http://yu_ming-ip:8081/repository/ubuntuproxy/ bionic-security main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>测试<br><img src="/nexus/nexus18.png" alt="nexus"><br><img src="/nexus/nexus19.png" alt="nexus"></li>
+</ol>
+<h3 id="配置docker仓库"><a href="#配置docker仓库" class="headerlink" title="配置docker仓库"></a>配置docker仓库</h3><h3 id="配置go仓库"><a href="#配置go仓库" class="headerlink" title="配置go仓库"></a>配置go仓库</h3><ol>
+<li>创建go blob stores</li>
+<li>创建仓库选择go(proxy)</li>
+<li>键入名称</li>
+<li>输入远程存储地址 <a href="https://mirrors.aliyun.com/goproxy/">https://mirrors.aliyun.com/goproxy/</a> <em>勾选Use certificates stored</em></li>
+<li>选择之前创建的blob stores</li>
+<li>创建仓库选择go(group)</li>
+<li>键入名称</li>
+<li>选择创建的go blob stores</li>
+<li>在member选项选择刚刚创建好的proxy</li>
+</ol>
+<p><img src="/nexus/nexus16.png" alt="nexus"></p>
+<ol start="10">
+<li>修改环境变量</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.13以上</span></span><br><span class="line">go env -w GO111MODULE=on</span><br><span class="line">go env -w GOPROXY=http://yu_ming-ip:8081/repository/gogroup/</span><br><span class="line"><span class="comment"># 以下</span></span><br><span class="line"><span class="comment"># windows</span></span><br><span class="line"><span class="built_in">set</span> GO111MODULE=on</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> GO111MODULE=on</span><br><span class="line"><span class="built_in">export</span> GOPROXY=http://yu_ming-ip:8081/repository/gogroup/</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>测试<br><code>go get -u github.com/golang/sys</code></li>
+</ol>
+<h3 id="配置npm仓库"><a href="#配置npm仓库" class="headerlink" title="配置npm仓库"></a>配置npm仓库</h3><ol>
+<li>创建blob stores</li>
+<li>创建仓库选择npm(hosted)</li>
+<li>键入名称</li>
+<li>选择刚刚创建的blob stores</li>
+<li>创建仓库选择npm(proxy)</li>
+<li>键入名称</li>
+<li>输入远程存储地址 <a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a> <em>勾选Use certificates stored</em></li>
+<li>选择之前创建的blob stores</li>
+<li>创建仓库选择npm(group)</li>
+<li>键入名称</li>
+<li>选择刚刚创建的blob stores</li>
+<li>在member选项选择刚刚创建好的hosted和proxy</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br><span class="line">npm config <span class="built_in">set</span> registry http://yu_ming-ip:8081/repository/npmgroup/</span><br></pre></td></tr></table></figure>
+
+<p><img src="/nexus/nexus4.png" alt="nexus"></p>
+<h3 id="配置pypi仓库"><a href="#配置pypi仓库" class="headerlink" title="配置pypi仓库"></a>配置pypi仓库</h3><ol>
+<li><p>创建pypi blob stores</p>
+</li>
+<li><p>创建pypihosted<br><img src="/nexus/nexus5.png" alt="nexus"></p>
+</li>
+<li><p>创建pypiproxy<br><a href="http://mirrors.aliyun.com/pypi">http://mirrors.aliyun.com/pypi</a></p>
+</li>
+</ol>
+<p><img src="/nexus/nexus6.png" alt="nexus"></p>
+<ol start="4">
+<li><p>创建pypigroup<br><img src="/nexus/nexus7.png" alt="nexus"></p>
+</li>
+<li><p>测试<br><img src="/nexus/nexus8.png" alt="nexus"></p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests -i http://yu_ming-ip:8081/repository/pypigroup/simple --trusted-host yu_ming-ip</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置yum仓库"><a href="#配置yum仓库" class="headerlink" title="配置yum仓库"></a>配置yum仓库</h3><ol>
+<li><p>创建yum存储空间<br><img src="https://www.zhengxk.com/upload/2020/09/image-46ae11e3763f4e77a18dfc2a263f7fd6.png" alt="nexus"></p>
+</li>
+<li><p>填写对应信息<br><img src="https://www.zhengxk.com/upload/2020/09/image-4af2dcf6037741b5bdc8bade570290e7.png" alt="nexus"></p>
+</li>
+<li><p>创建yumhosted</p>
+<img src="/nexus/nexus1.png" class title="nexus">
+
+</li>
+</ol>
+<p><img src="https://www.zhengxk.com/upload/2020/09/image-9583bf64b80843f6bd8ff430242632dd.png" alt="nexus"></p>
+<p><img src="https://www.zhengxk.com/upload/2020/09/image-8fead1242ceb4257a68e1a2cb79aa41b.png" alt="nexus"></p>
+<ol start="4">
+<li>创建yumproxy<br><a href="https://mirrors.aliyun.com/centos">https://mirrors.aliyun.com/centos</a></li>
+</ol>
+<p><img src="https://www.zhengxk.com/upload/2020/09/image-654625e199744670a9c1a12b59092205.png" alt="nexus"></p>
+<p><img src="https://www.zhengxk.com/upload/2020/09/image-c306b66c7f1a4225829d832f47f90600.png" alt="nexus"></p>
+<ol start="5">
+<li>创建yumgroup<br><img src="https://www.zhengxk.com/upload/2020/09/image-92a92a11d7a54994a5534a65afba372b.png" alt="nexus"></li>
+</ol>
+<p><img src="https://www.zhengxk.com/upload/2020/09/image-e33cf4a35f604480adf013064e39fd37.png" alt="nexus"></p>
+<ol start="6">
+<li>在 <code>etc/yum.repos.d/</code> 备份 <code>*.repo</code> 文件并新建 <code>nexus.repo</code> 填如下内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[nexus]</span><br><span class="line">name&#x3D;NexusYum</span><br><span class="line">baseurl&#x3D;http:&#x2F;&#x2F;yu_ming-ip:8081&#x2F;repository&#x2F;yumgroup&#x2F;$releasever&#x2F;os&#x2F;$basearch&#x2F;</span><br><span class="line">enabled&#x3D;1</span><br><span class="line">gpgcheck&#x3D;0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h3 id="内网全量同步"><a href="#内网全量同步" class="headerlink" title="内网全量同步"></a>内网全量同步</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="https://link.hhtjim.com/163/5179544.mp3">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci='80c0a1731898dd4dd04f'
+        data-cs='20ef950e67a9b95b6698b227c0717df682a83803'
+        data-r='acdiost.github.io'
+        data-o='acdiost'
+        data-a='acdiost'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Nexus%E9%83%A8%E7%BD%B2%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">使用Nexus部署私有仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%8C%85%E5%AD%98%E5%82%A8%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">建立包存储目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEmaven%E4%BB%93%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">配置maven仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEapt%E4%BB%93%E5%BA%93"><span class="toc-number">1.4.</span> <span class="toc-text">配置apt仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdocker%E4%BB%93%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">配置docker仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEgo%E4%BB%93%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">配置go仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEnpm%E4%BB%93%E5%BA%93"><span class="toc-number">1.7.</span> <span class="toc-text">配置npm仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEpypi%E4%BB%93%E5%BA%93"><span class="toc-number">1.8.</span> <span class="toc-text">配置pypi仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEyum%E4%BB%93%E5%BA%93"><span class="toc-number">1.9.</span> <span class="toc-text">配置yum仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E5%85%A8%E9%87%8F%E5%90%8C%E6%AD%A5"><span class="toc-number">1.10.</span> <span class="toc-text">内网全量同步</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
