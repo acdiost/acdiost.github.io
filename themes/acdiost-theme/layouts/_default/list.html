@@ -23,7 +23,6 @@
       <h2 class="text-xl font-bold"><a class="hover:underline" href="{{ .Permalink }}">{{ .Title }}</a></h2>
       <time class="text-gray-600">{{ .Date | time.Format ":date_medium" }}</time>
       <p>{{ .Summary }}</p>
-
     </li>
     {{ end }}
   </ul>
