@@ -17,9 +17,10 @@ Visit the Hugo website!
 添加文章： hugo new &quot;categories/title.md&quot;
 本地查看： hugo server -D
 发布文章： hugo
-推送至 GitHub Pages：
-cd ../acdiost.github.io git add . git commit -sm &#34;add new post&#34; git push -u origin main 同步 Hugo 至 GitHub：
-cd hugo-posts git add . git commit -sm &#34;add new post&#34; git push -u origin main 我创建博客使用了很多工具，诸如新浪博客、WordPress、typecho、leanote、hexo、logseq 和语雀等。 最终选择使用 hugo 来管理，GitHub Pages 作为托管。 曾使用 WordPress、typecho 和 hexo 把站点弄的花里胡哨，其实并没有太大作用。 我也曾使用 logseq 和 obsidian 来管理，但它们是作为知识的整理归纳；博客作为最后的输出，发现不太适合自己的需求。" />
+同步 Hugo 至 GitHub：
+cd hugo-blog git add . git commit -sm &#34;add new post&#34; git push -u origin main 我创建博客使用了很多工具，诸如新浪博客、WordPress、typecho、leanote、hexo、logseq 和语雀等。 最终选择使用 hugo 来管理，GitHub Pages 作为托管。 曾使用 WordPress、typecho 和 hexo 把站点弄的花里胡哨，其实并没有太大作用。 我也曾使用 logseq 和 obsidian 来管理，但它们是作为知识的整理归纳；博客作为最后的输出，发现不太适合自己的需求。
+我选择了自己结合 ChatGPT 用 tailwindcss 写一个 hugo 的主题，致力于阅读，没有评论让自己思考；化繁为简没有其他的东西干扰。
+其实最重要的莫过于是持之以恒，任何事大抵如此。 望自己能坚持下去！" />
     <meta name="author" content="Dawn`s Blog" />
     
 
@@ -29,7 +30,7 @@ cd hugo-posts git add . git commit -sm &#34;add new post&#34; git push -u origin
     <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
   <div class="container mx-auto flex content-around justify-between px-4">
     <div>
-      <a class="font-bold" href="http://192.168.1.7:1313/">Dawn`s Blog</a>
+      <a class="font-bold" href="https://acdiost.github.io/">Dawn`s Blog</a>
     </div>
     <div class="hidden md:block menu">
       <nav>
@@ -71,13 +72,8 @@ cd hugo-posts git add . git commit -sm &#34;add new post&#34; git push -u origin
 <p>添加文章： <code>hugo new &quot;categories/title.md&quot;</code></p>
 <p>本地查看： <code>hugo server -D</code></p>
 <p>发布文章： <code>hugo</code></p>
-<p>推送至 GitHub Pages：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd ../acdiost.github.io
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -sm <span style="color:#e6db74">&#34;add new post&#34;</span>
-</span></span><span style="display:flex;"><span>git push -u origin main
-</span></span></code></pre></div><p>同步 Hugo 至 GitHub：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-posts
+<p>同步 Hugo 至 GitHub：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd hugo-blog
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -sm <span style="color:#e6db74">&#34;add new post&#34;</span>
 </span></span><span style="display:flex;"><span>git push -u origin main
@@ -97,7 +93,7 @@ cd hugo-posts git add . git commit -sm &#34;add new post&#34; git push -u origin
     <nav class="my-12 flex justify-between">
         
         
-        <a href="http://192.168.1.7:1313/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/"><span class="font-bold text-[#161823]">为 Git 添加签名验证信息</span></a>
+        <a href="https://acdiost.github.io/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/"><span class="font-bold text-[#161823]">为 Git 添加签名验证信息</span></a>
         
         
     </nav>
@@ -106,11 +102,11 @@ cd hugo-posts git add . git commit -sm &#34;add new post&#34; git push -u origin
 
         </div><footer class="w-full py-4">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
-        <div>&copy; 2024 <a href="http://192.168.1.7:1313/">Dawn`s Blog</a></div>
+        <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
             <a href="https://github.com/acdiost/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>
-                <span class="text-slate-300">|</span>
+            <span class="text-slate-300">|</span>
             <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
         </div>
     </div>

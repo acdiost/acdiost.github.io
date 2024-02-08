@@ -41,7 +41,9 @@
         padding: 1em;
         margin: 1em 0;
         border-radius: 7px;
+        line-height: 1.5rem;
+        letter-spacing: 0rem;
     }
-  }
+}
 
 @tailwind utilities;
