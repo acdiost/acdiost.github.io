@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+{{- partial "head.html" . -}}
+
+<body>
+    <main class="bg-yellow-50 flex flex-col min-h-screen">
+        {{- partial "header.html" . -}}
+        <div id="content" class="flex-grow flex items-center justify-center">
+            {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+    </main>
+</body>
+
+</html>

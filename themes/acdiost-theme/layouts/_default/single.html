@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<div class="container p-4 mx-auto {{ if not .IsHome }}w-full md:w-1/2{{ else }}w-full{{ end }}">
+    <article class="prose sm:prose-lg md:prose-x">
+        <header class="mb-4">
+            <h1 class="mt-10 text-4xl">{{ .Title }}</h1>
+            {{ if ne .Type "page" }}
+            <div class="py-4">
+                {{ if .Date }}
+                <time>{{ .Date | time.Format ":date_medium" }}</time>
+                {{ end }}
+            </div>
+            {{ end }}
+        </header>
+
+        <section class="mb-16 text-lg"
+            style="font-family: 'LXGW WenKai Lite', sans-serif; line-height: 2.0rem; letter-spacing: 0.07rem;">{{
+            .Content }}</section>
+
+        {{ if .Params.tags }}
+        <footer class="my-16 mx-4">
+            {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+            <a href="{{ $href }}">{{ . }}</a>
+            {{ end }}
+        </footer>
+        {{ end }}
+    </article>
+
+    <nav class="my-12 flex justify-between">
+        {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+        {{ with $pages.Next . }}
+        <a href="{{ .Permalink }}"><span class="font-bold text-[#161823]">{{ .Name }}</span></a>
+        {{ end }}
+        {{ with $pages.Prev . }}
+        <a href="{{ .Permalink }}"><span class="font-bold text-[#161823]"> {{ .Name }} </span></a>
+        {{ end }}
+    </nav>
+</div>
+
+{{ end }}

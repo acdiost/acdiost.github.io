@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ $pages := union .RegularPages .Sections }}
+
+{{ if .IsHome }}
+{{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ end }}
+
+<section class="container mx-auto w-full md:w-1/2 p-16">
+    <ul>
+        {{ $paginator := .Paginate $pages }}
+        {{ range $index, $page := $paginator.Pages }}
+        <li class="py-4">
+            <h2 class="text-xl font-bold mb-2"><a class="mt-2 block" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <time class="text-gray-600">{{ .Date | time.Format "Jan 2, 2006" }}</time>
+        </li>
+        {{ end }}
+    </ul>
+    {{ if gt .Paginator.TotalPages 1 }}
+    <nav class="my-8 flex flex-row justify-between items-center">
+        <div>
+            {{ if .Paginator.HasPrev }}
+            <a class="text-[#EACD76] p-3 bg-slate-800 rounded-md hover:underline"
+                href="{{ .Paginator.Prev.URL }}">&larr; Previous</a>
+            {{ end }}
+        </div>
+        <div>
+            <span class="mb-2">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+        </div>
+        <div>
+            {{ if .Paginator.HasNext }}
+            <a class="text-[#EACD76] p-3 bg-slate-800 rounded-md hover:underline" href="{{ .Paginator.Next.URL }}">Next
+                &rarr;</a>
+            {{ end }}
+        </div>
+    </nav>
+    {{ end }}
+</section>
+
+{{ end }}

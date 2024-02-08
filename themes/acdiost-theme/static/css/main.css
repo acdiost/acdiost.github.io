@@ -1,0 +1,49 @@
+@tailwind base;
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    h4 {
+        @apply text-base;
+    }
+
+    h5 {
+        @apply text-sm;
+    }
+
+    h6 {
+        @apply text-xs;
+    }
+
+    hr {
+        @apply my-6;
+    }
+
+
+}
+
+@tailwind components;
+
+@layer components {
+    pre {
+        white-space: pre-wrap;
+        overflow-x: auto;
+        padding: 1em;
+        margin: 1em 0;
+        border-radius: 7px;
+        line-height: 1.5rem;
+        letter-spacing: 0rem;
+    }
+}
+
+@tailwind utilities;
