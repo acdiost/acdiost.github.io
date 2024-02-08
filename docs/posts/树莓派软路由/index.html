@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
+    <link rel="stylesheet" href="/css/tailwind.acdiost.css">
+    <script src="/js/hugo.acdiost.js"></script>
+
+    <title>树莓派软路由 - Dawn`s Blog</title>
+
+    
+
+    
+    <meta name="description" content="树莓派 4B docker openwrt 软路由快速配置 安装前提 Docker curl -fsSL https://get.docker.com -o get-docker.sh sudo sh get-docker.sh 我使用的系统环境是
+dawn@raspberrypi:/opt/openwrt $ uname -a Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1&#43;rpt2 (2023-10-05) aarch64 GNU/Linux dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release PRETTY_NAME=&#34;Debian GNU/Linux 12 (bookworm)&#34; NAME=&#34;Debian GNU/Linux&#34; VERSION_ID=&#34;12&#34; VERSION=&#34;12 (bookworm)&#34; VERSION_CODENAME=bookworm ID=debian HOME_URL=&#34;https://www.debian.org/&#34; SUPPORT_URL=&#34;https://www.debian.org/support&#34; BUG_REPORT_URL=&#34;https://bugs.debian.org/&#34; 开启混杂模式 sudo ip link set eth0 promisc on 此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
+创建网络 此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
+sudo docker network create -d macvlan --subnet=192." />
+    <meta name="author" content="Dawn`s Blog" />
+    
+
+    
+
+</head><body>
+    <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
+  <div class="container mx-auto flex content-around justify-between px-4">
+    <div>
+      <a class="font-bold" href="http://192.168.1.7:1313/">Dawn`s Blog</a>
+    </div>
+    <div class="hidden md:block menu">
+      <nav>
+        <ul class="flex justify-end space-x-6">
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="block md:hidden">
+      <button id="menu-toggle"
+        class="flex items-center px-3 py-2 border rounded text-gray-800 border-gray-400 hover:text-black hover:border-black">
+        <svg class="h-3 w-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header><div id="content" class="flex-grow flex items-center justify-center">
+
+<div class="container p-4 mx-auto w-full md:w-1/2">
+    <article class="prose sm:prose-lg md:prose-x">
+        <header class="mb-4">
+            <h1 class="mt-10 text-4xl">树莓派软路由</h1>
+            
+            <div class="py-4">
+                
+                <time>Dec 20, 2023</time>
+                
+            </div>
+            
+        </header>
+
+        <section class="mb-16 text-lg"
+            style="font-family: 'LXGW WenKai Lite', sans-serif; line-height: 2.0rem; letter-spacing: 0.07rem;"><h2 id="树莓派-4b-docker-openwrt-软路由快速配置">树莓派 4B docker openwrt 软路由快速配置</h2>
+<h3 id="安装前提">安装前提</h3>
+<ul>
+<li>Docker</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://get.docker.com -o get-docker.sh
+</span></span><span style="display:flex;"><span>sudo sh get-docker.sh
+</span></span></code></pre></div><p>我使用的系统环境是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dawn@raspberrypi:/opt/openwrt $ uname -a
+</span></span><span style="display:flex;"><span>Linux raspberrypi 6.1.0-rpi4-rpi-v8 <span style="color:#75715e">#1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release 
+</span></span><span style="display:flex;"><span>PRETTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Debian GNU/Linux 12 (bookworm)&#34;</span>
+</span></span><span style="display:flex;"><span>NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Debian GNU/Linux&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION_ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12 (bookworm)&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION_CODENAME<span style="color:#f92672">=</span>bookworm
+</span></span><span style="display:flex;"><span>ID<span style="color:#f92672">=</span>debian
+</span></span><span style="display:flex;"><span>HOME_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.debian.org/&#34;</span>
+</span></span><span style="display:flex;"><span>SUPPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.debian.org/support&#34;</span>
+</span></span><span style="display:flex;"><span>BUG_REPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://bugs.debian.org/&#34;</span>
+</span></span></code></pre></div><h3 id="开启混杂模式">开启混杂模式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ip link set eth0 promisc on
+</span></span></code></pre></div><p>此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。</p>
+<h3 id="创建网络">创建网络</h3>
+<p>此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker network create -d macvlan --subnet<span style="color:#f92672">=</span>192.168.1.0/24 --gateway<span style="color:#f92672">=</span>192.168.1.1 -o parent<span style="color:#f92672">=</span>eth0 openwrt-wan
+</span></span></code></pre></div><p>此命令使用 macvlan 驱动程序创建一个名为 openwrt-wan 的 Docker 网络。 它通过 Raspberry Pi 上的 eth0 有效地将 Docker 容器桥接到物理网络。</p>
+<p><code>--subnet=192.168.1.0/24</code> 指定 Docker 网络的子网。</p>
+<p><code>--gateway=192.168.1.1</code> 指定 Docker 网络的网关。</p>
+<p><code>-o parent=eth0</code> 指定 Raspberry Pi 上的物理接口 eth0 应作为此 Docker 网络的父接口。</p>
+<h3 id="创建目录和文件">创建目录和文件</h3>
+<p><code>sudo mkdir /opt/openwrt &amp;&amp; cd /opt/openwrt &amp;&amp; sudo vi network</code> 文件，内容如下</p>
+<p>option gateway 和 option dns 必须填写路由器的 IP，若树莓派获得的 IP 为 192.168.1.9【下面的 ipaddr 为容器的固定 IP，改为你自己想要的地址，用于访问 openwrt 】，路由器 IP 为 192.168.1.1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>config interface &#39;loopback&#39;
+</span></span><span style="display:flex;"><span>        option ifname &#39;lo&#39;
+</span></span><span style="display:flex;"><span>        option proto &#39;static&#39;
+</span></span><span style="display:flex;"><span>        option ipaddr &#39;127.0.0.1&#39;
+</span></span><span style="display:flex;"><span>        option netmask &#39;255.0.0.0&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config globals &#39;globals&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config interface &#39;lan&#39;
+</span></span><span style="display:flex;"><span>        option type &#39;bridge&#39;
+</span></span><span style="display:flex;"><span>        option ifname &#39;eth0&#39;
+</span></span><span style="display:flex;"><span>        option proto &#39;static&#39;
+</span></span><span style="display:flex;"><span>        option netmask &#39;255.255.255.0&#39;
+</span></span><span style="display:flex;"><span>        option ip6assign &#39;60&#39;
+</span></span><span style="display:flex;"><span>        option ipaddr &#39;192.168.1.100&#39;
+</span></span><span style="display:flex;"><span>        option gateway &#39;192.168.1.1&#39;
+</span></span><span style="display:flex;"><span>        option dns &#39;192.168.1.1&#39;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config interface &#39;vpn0&#39;
+</span></span><span style="display:flex;"><span>        option ifname &#39;tun0&#39;
+</span></span><span style="display:flex;"><span>        option proto &#39;none&#39;
+</span></span></code></pre></div><p>创建 docker-compose.yaml 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">openwrt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">sulinggg/openwrt:latest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">container_name</span>: <span style="color:#ae81ff">openwrt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">network_mode</span>: <span style="color:#ae81ff">openwrt-wan</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">privileged</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">./network:/etc/config/network</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: <span style="color:#ae81ff">/sbin/init</span>
+</span></span></code></pre></div><p>配置完成后目录如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dawn@raspberrypi:/opt/openwrt $ ls
+</span></span><span style="display:flex;"><span>docker-compose.yaml  network
+</span></span></code></pre></div><h3 id="启动-openwrt">启动 openwrt</h3>
+<p><code>docker compose up -d</code> 启动容器</p>
+<p>重启网络配置生效</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec openwrt /etc/init.d/network restart
+</span></span></code></pre></div><h3 id="访问网页">访问网页</h3>
+<p>浏览器打开 192.168.1.100 访问 openwrt</p>
+<p>默认用户：root</p>
+<p>密码：password</p>
+</section>
+
+        
+    </article>
+
+    <nav class="my-12 flex justify-between">
+        
+        
+        
+        <a href="http://192.168.1.7:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/"><span class="font-bold text-[#161823]"> 波粒二象性 </span></a>
+        
+    </nav>
+</div>
+
+
+        </div><footer class="w-full py-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+        <div>&copy; 2024 <a href="http://192.168.1.7:1313/">Dawn`s Blog</a></div>
+        <div class="mt-4 md:mt-0">
+            <a href="https://github.com/acdiost/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+                ChatGPT</a>
+                <span class="text-slate-300">|</span>
+            <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
+        </div>
+    </div>
+</footer></main>
+</body>
+
+</html>

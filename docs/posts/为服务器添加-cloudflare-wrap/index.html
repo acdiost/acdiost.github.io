@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
+    <link rel="stylesheet" href="/css/tailwind.acdiost.css">
+    <script src="/js/hugo.acdiost.js"></script>
+
+    <title>为服务器添加 Cloudflare Wrap - Dawn`s Blog</title>
+
+    
+
+    
+    <meta name="description" content="Cloudflare WARP 是 Cloud­flare 提供的一项基于 Wire­Guard 的网络流量安全及加速服务，能够让你通过连接到 Cloud­flare 的边缘节点实现隐私保护及链路优化。
+很多我们需要访问的网站都需要使用原生 IP，比如：Disney&#43;， ChatGPT, New Bing 等。
+所谓原生 IP 就是指该网站的 IP 地址和其机房的 IP 地址是一致的
+wget git.io/warp.sh sudo bash warp.sh menu 选择：1、4、5；
+1 - 安装 Cloudflare WARP 官方客户端
+4 - 安装 WireGuard 相关组件
+5 - 自动配置 WARP WireGuard IPv4 网络
+如果有 ipv4 和 ipv6，则可选：1、4、7
+1 - 安装 Cloudflare WARP 官方客户端
+4 - 安装 WireGuard 相关组件
+7 - 自动配置 WARP WireGuard 双栈全局网络" />
+    <meta name="author" content="Dawn`s Blog" />
+    
+
+    
+
+</head><body>
+    <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
+  <div class="container mx-auto flex content-around justify-between px-4">
+    <div>
+      <a class="font-bold" href="http://192.168.1.7:1313/">Dawn`s Blog</a>
+    </div>
+    <div class="hidden md:block menu">
+      <nav>
+        <ul class="flex justify-end space-x-6">
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="block md:hidden">
+      <button id="menu-toggle"
+        class="flex items-center px-3 py-2 border rounded text-gray-800 border-gray-400 hover:text-black hover:border-black">
+        <svg class="h-3 w-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header><div id="content" class="flex-grow flex items-center justify-center">
+
+<div class="container p-4 mx-auto w-full md:w-1/2">
+    <article class="prose sm:prose-lg md:prose-x">
+        <header class="mb-4">
+            <h1 class="mt-10 text-4xl">为服务器添加 Cloudflare Wrap</h1>
+            
+            <div class="py-4">
+                
+                <time>Apr 5, 2023</time>
+                
+            </div>
+            
+        </header>
+
+        <section class="mb-16 text-lg"
+            style="font-family: 'LXGW WenKai Lite', sans-serif; line-height: 2.0rem; letter-spacing: 0.07rem;"><p>Cloudflare WARP 是 Cloud­flare 提供的一项基于 Wire­Guard 的网络流量安全及加速服务，能够让你通过连接到 Cloud­flare 的边缘节点实现隐私保护及链路优化。</p>
+<p>很多我们需要访问的网站都需要使用原生 IP，比如：Disney+， ChatGPT, New Bing 等。</p>
+<p>所谓原生 IP 就是指该网站的 IP 地址和其机房的 IP 地址是一致的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget git.io/warp.sh
+</span></span><span style="display:flex;"><span>sudo bash warp.sh menu
+</span></span></code></pre></div><p>选择：1、4、5；</p>
+<p>1 - 安装 Cloudflare WARP 官方客户端</p>
+<p>4 - 安装 WireGuard 相关组件</p>
+<p>5 - 自动配置 WARP WireGuard IPv4 网络</p>
+<p>如果有 ipv4 和 ipv6，则可选：1、4、7</p>
+<p>1 - 安装 Cloudflare WARP 官方客户端</p>
+<p>4 - 安装 WireGuard 相关组件</p>
+<p>7 - 自动配置 WARP WireGuard 双栈全局网络</p>
+</section>
+
+        
+    </article>
+
+    <nav class="my-12 flex justify-between">
+        
+        
+        <a href="http://192.168.1.7:1313/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/"><span class="font-bold text-[#161823]">最好的学习是输出</span></a>
+        
+        
+        <a href="http://192.168.1.7:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/"><span class="font-bold text-[#161823]"> 重要的是去做，从一点点开始 </span></a>
+        
+    </nav>
+</div>
+
+
+        </div><footer class="w-full py-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+        <div>&copy; 2024 <a href="http://192.168.1.7:1313/">Dawn`s Blog</a></div>
+        <div class="mt-4 md:mt-0">
+            <a href="https://github.com/acdiost/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+                ChatGPT</a>
+                <span class="text-slate-300">|</span>
+            <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
+        </div>
+    </div>
+</footer></main>
+</body>
+
+</html>

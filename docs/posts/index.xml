@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Dawn`s Blog</title>
+    <link>http://192.168.1.7:1313/posts/</link>
+    <description>Recent content in Posts on Dawn`s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Wed, 20 Dec 2023 21:24:59 +0800</lastBuildDate><atom:link href="http://192.168.1.7:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>树莓派软路由</title>
+      <link>http://192.168.1.7:1313/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Wed, 20 Dec 2023 21:24:59 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BD%AF%E8%B7%AF%E7%94%B1/</guid>
+      <description>树莓派 4B docker openwrt 软路由快速配置 安装前提 Docker curl -fsSL https://get.docker.com -o get-docker.sh sudo sh get-docker.sh 我使用的系统环境是
+dawn@raspberrypi:/opt/openwrt $ uname -a Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release PRETTY_NAME=&amp;#34;Debian GNU/Linux 12 (bookworm)&amp;#34; NAME=&amp;#34;Debian GNU/Linux&amp;#34; VERSION_ID=&amp;#34;12&amp;#34; VERSION=&amp;#34;12 (bookworm)&amp;#34; VERSION_CODENAME=bookworm ID=debian HOME_URL=&amp;#34;https://www.debian.org/&amp;#34; SUPPORT_URL=&amp;#34;https://www.debian.org/support&amp;#34; BUG_REPORT_URL=&amp;#34;https://bugs.debian.org/&amp;#34; 开启混杂模式 sudo ip link set eth0 promisc on 此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
+创建网络 此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
+sudo docker network create -d macvlan --subnet=192.</description>
+    </item>
+    
+    <item>
+      <title>波粒二象性</title>
+      <link>http://192.168.1.7:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</link>
+      <pubDate>Sat, 14 Oct 2023 19:56:53 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</guid>
+      <description>波粒二象性 什么是波粒二象性？
+波粒二象性（wave-particle duality）指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。【百科】
+波粒二象性是指微观粒子（如光子、电子等）在某些实验条件下既表现出波动性质又表现出粒子性质的现象。这是量子力学的一个基本概念，最早由德国物理学家德布罗意（Louis de Broglie）于1924年提出。【ChatGPT】
+个人不懂相关的知识，粗鄙的愚见：
+它类比就像水和水分子。
+波即是水，粒即是水分子。
+当达到一定质量即为波，仔细观察即是水分子。
+推测其甚至可能还有固态形式。</description>
+    </item>
+    
+    <item>
+      <title>最好的学习是输出</title>
+      <link>http://192.168.1.7:1313/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/</link>
+      <pubDate>Wed, 11 Oct 2023 20:26:14 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/</guid>
+      <description>最好的学习是输出什么内容而不是学习了什么内容。</description>
+    </item>
+    
+    <item>
+      <title>为服务器添加 Cloudflare Wrap</title>
+      <link>http://192.168.1.7:1313/posts/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0-cloudflare-wrap/</link>
+      <pubDate>Wed, 05 Apr 2023 10:42:09 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0-cloudflare-wrap/</guid>
+      <description>Cloudflare WARP 是 Cloud­flare 提供的一项基于 Wire­Guard 的网络流量安全及加速服务，能够让你通过连接到 Cloud­flare 的边缘节点实现隐私保护及链路优化。
+很多我们需要访问的网站都需要使用原生 IP，比如：Disney+， ChatGPT, New Bing 等。
+所谓原生 IP 就是指该网站的 IP 地址和其机房的 IP 地址是一致的
+wget git.io/warp.sh sudo bash warp.sh menu 选择：1、4、5；
+1 - 安装 Cloudflare WARP 官方客户端
+4 - 安装 WireGuard 相关组件
+5 - 自动配置 WARP WireGuard IPv4 网络
+如果有 ipv4 和 ipv6，则可选：1、4、7
+1 - 安装 Cloudflare WARP 官方客户端
+4 - 安装 WireGuard 相关组件
+7 - 自动配置 WARP WireGuard 双栈全局网络</description>
+    </item>
+    
+    <item>
+      <title>重要的是去做，从一点点开始</title>
+      <link>http://192.168.1.7:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Sun, 26 Mar 2023 21:35:00 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</guid>
+      <description>距离上次发布文章已经过去了一个多月了，博客一直没有更新。
+想着写点什么，随便写什么都可以，文笔虽然不好，也没什么。
+重要的是去做，去行动起来，从一点点开始，渐渐地养成习惯。</description>
+    </item>
+    
+    <item>
+      <title>为 Git 添加签名验证信息</title>
+      <link>http://192.168.1.7:1313/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Mon, 06 Feb 2023 10:50:22 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/</guid>
+      <description>有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作：
+gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. Please select what kind of key you want: (1) RSA and RSA (default) (2) DSA and Elgamal (3) DSA (sign only) (4) RSA (sign only) (14) Existing key from card Your selection?</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>http://192.168.1.7:1313/posts/my-first-post/</link>
+      <pubDate>Fri, 03 Feb 2023 12:27:12 +0800</pubDate>
+      
+      <guid>http://192.168.1.7:1313/posts/my-first-post/</guid>
+      <description>Introduction This is bold text, and this is emphasized text.
+Visit the Hugo website!
+添加文章： hugo new &amp;quot;categories/title.md&amp;quot;
+本地查看： hugo server -D
+发布文章： hugo
+推送至 GitHub Pages：
+cd ../acdiost.github.io git add . git commit -sm &amp;#34;add new post&amp;#34; git push -u origin main 同步 Hugo 至 GitHub：
+cd hugo-posts git add . git commit -sm &amp;#34;add new post&amp;#34; git push -u origin main 我创建博客使用了很多工具，诸如新浪博客、WordPress、typecho、leanote、hexo、logseq 和语雀等。 最终选择使用 hugo 来管理，GitHub Pages 作为托管。 曾使用 WordPress、typecho 和 hexo 把站点弄的花里胡哨，其实并没有太大作用。 我也曾使用 logseq 和 obsidian 来管理，但它们是作为知识的整理归纳；博客作为最后的输出，发现不太适合自己的需求。</description>
+    </item>
+    
+  </channel>
+</rss>
