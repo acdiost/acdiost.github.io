@@ -6,7 +6,7 @@ license = "MIT"
 licenselink = "https://github.com/acdiost/acdiost.github.io/blob/main/LICENSE"
 description = "Theme Acdiost with ChatGPT"
 homepage = "https://acdiost.github.io/"
-tags = ["blog", "responsive", "simple", "light", "clean", "tailwindcss"]
+tags = ["blog", "responsive", "simple", "light", "clean", "tailwindcss", "personal"]
 features = ["blog", "responsive", "simple", "light", "clean", "tailwindcss"]
 min_version = "0.41.0"
 

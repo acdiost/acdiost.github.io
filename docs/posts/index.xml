@@ -6,7 +6,33 @@
     <description>Recent content in Posts on Dawn`s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Thu, 01 Feb 2024 22:11:29 +0800</lastBuildDate><atom:link href="https://acdiost.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Feb 2024 20:03:04 +0800</lastBuildDate><atom:link href="https://acdiost.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于我</title>
+      <link>https://acdiost.github.io/posts/about/</link>
+      <pubDate>Mon, 19 Feb 2024 20:03:04 +0800</pubDate>
+      
+      <guid>https://acdiost.github.io/posts/about/</guid>
+      <description>Hello, my name is Dawn.</description>
+    </item>
+    
+    <item>
+      <title>写了一个 hugo 主题</title>
+      <link>https://acdiost.github.io/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Thu, 08 Feb 2024 22:14:09 +0800</pubDate>
+      
+      <guid>https://acdiost.github.io/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/</guid>
+      <description>在上个月末，我突发奇想，决定自己结合 ChatGPT 写一个 Hugo 主题。 最开始通过网上的几个视频教程学习，如何创建主题开始一个 Hello world， 再参考其他主题的语法，把基础的几个页面架子搭建出来了。
+然后开始学习 Tailwindcss，也间接了解了 Unocss。
+最后通过和 ChatGPT 的对话，写了三遍，我成功地完成了此主题编写。
+期间因为工作、其他事情的耽搁，花费了将近半个月才把这个主题完全写好。
+前前后后总耗时预计为两天。
+整个页面布局简单
+兼容手机
+文章字体使用落霞文楷，更契合汉字美感
+将字体调整大，为大多近视的人提供更好的阅读体验</description>
+    </item>
+    
     <item>
       <title>Use_tailwindcss</title>
       <link>https://acdiost.github.io/posts/use_tailwindcss/</link>

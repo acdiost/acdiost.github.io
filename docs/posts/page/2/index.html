@@ -24,12 +24,13 @@
     <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
   <div class="container mx-auto flex content-around justify-between px-4">
     <div>
-      <a class="font-bold" href="https://acdiost.github.io/">Dawn`s Blog</a>
+      <a class="font-bold text-lg" href="https://acdiost.github.io/">Dawn`s Blog</a>
     </div>
     <div class="hidden md:block menu">
       <nav>
         <ul class="flex justify-end space-x-6">
-          <li><a href="#"></a></li>
+          <li><a href="https://github.com/acdiost" target="_blank">GitHub</a></li>
+          <li><a href="/posts/about/">About Me</a></li>
         </ul>
       </nav>
     </div>
@@ -57,6 +58,21 @@
   <ul>
     
     <li class="p-4 mb-4">
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/">重要的是去做，从一点点开始</a></h2>
+      <time class="text-gray-600">Mar 26, 2023</time>
+      <p>距离上次发布文章已经过去了一个多月了，博客一直没有更新。
+想着写点什么，随便写什么都可以，文笔虽然不好，也没什么。
+重要的是去做，去行动起来，从一点点开始，渐渐地养成习惯。</p>
+    </li>
+    
+    <li class="p-4 mb-4">
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/">为 Git 添加签名验证信息</a></h2>
+      <time class="text-gray-600">Feb 6, 2023</time>
+      <p>有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作：
+gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. Please select what kind of key you want: (1) RSA and RSA (default) (2) DSA and Elgamal (3) DSA (sign only) (4) RSA (sign only) (14) Existing key from card Your selection?</p>
+    </li>
+    
+    <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/my-first-post/">My First Post</a></h2>
       <time class="text-gray-600">Feb 3, 2023</time>
       <p>Introduction This is bold text, and this is emphasized text.
@@ -68,7 +84,6 @@ Visit the Hugo website!
 cd hugo-blog git add . git commit -sm &#34;add new post&#34; git push -u origin main 我创建博客使用了很多工具，诸如新浪博客、WordPress、typecho、leanote、hexo、logseq 和语雀等。 最终选择使用 hugo 来管理，GitHub Pages 作为托管。 曾使用 WordPress、typecho 和 hexo 把站点弄的花里胡哨，其实并没有太大作用。 我也曾使用 logseq 和 obsidian 来管理，但它们是作为知识的整理归纳；博客作为最后的输出，发现不太适合自己的需求。
 我选择了自己结合 ChatGPT 用 tailwindcss 写一个 hugo 的主题，致力于阅读，没有评论让自己思考；化繁为简没有其他的东西干扰。
 其实最重要的莫过于是持之以恒，任何事大抵如此。 望自己能坚持下去！</p>
-
     </li>
     
   </ul>
@@ -96,7 +111,7 @@ cd hugo-blog git add . git commit -sm &#34;add new post&#34; git push -u origin 
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
-            <a href="https://github.com/acdiost/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+            <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>
             <span class="text-slate-300">|</span>
             <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>

@@ -24,12 +24,13 @@
     <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
   <div class="container mx-auto flex content-around justify-between px-4">
     <div>
-      <a class="font-bold" href="https://acdiost.github.io/">Dawn`s Blog</a>
+      <a class="font-bold text-lg" href="https://acdiost.github.io/">Dawn`s Blog</a>
     </div>
     <div class="hidden md:block menu">
       <nav>
         <ul class="flex justify-end space-x-6">
-          <li><a href="#"></a></li>
+          <li><a href="https://github.com/acdiost" target="_blank">GitHub</a></li>
+          <li><a href="/posts/about/">About Me</a></li>
         </ul>
       </nav>
     </div>
@@ -57,13 +58,32 @@
   <ul>
     
     <li class="p-4 mb-4">
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/about/">关于我</a></h2>
+      <time class="text-gray-600">Feb 19, 2024</time>
+      <p>Hello, my name is Dawn.</p>
+    </li>
+    
+    <li class="p-4 mb-4">
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/">写了一个 hugo 主题</a></h2>
+      <time class="text-gray-600">Feb 8, 2024</time>
+      <p>在上个月末，我突发奇想，决定自己结合 ChatGPT 写一个 Hugo 主题。 最开始通过网上的几个视频教程学习，如何创建主题开始一个 Hello world， 再参考其他主题的语法，把基础的几个页面架子搭建出来了。
+然后开始学习 Tailwindcss，也间接了解了 Unocss。
+最后通过和 ChatGPT 的对话，写了三遍，我成功地完成了此主题编写。
+期间因为工作、其他事情的耽搁，花费了将近半个月才把这个主题完全写好。
+前前后后总耗时预计为两天。
+整个页面布局简单
+兼容手机
+文章字体使用落霞文楷，更契合汉字美感
+将字体调整大，为大多近视的人提供更好的阅读体验</p>
+    </li>
+    
+    <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/use_tailwindcss/">Use_tailwindcss</a></h2>
       <time class="text-gray-600">Feb 1, 2024</time>
       <p>安装 hugo new theme acdiost-theme 创建主题后进入 cd themes/acdiost-theme 目录
 Install Tailwind CSS Install tailwindcss via npm, and create your tailwind.config.js file.
 npm install -D tailwindcss npx tailwindcss init Add the paths to all of your template files in your tailwind.config.js file.
 /** @type {import(&#39;tailwindcss&#39;).Config} */ module.exports = { content: [&#34;./layouts/**/*.{html,js}&#34;], theme: { extend: {}, }, plugins: [], } Add the @tailwind directives for each of Tailwind’s layers to your main CSS file.</p>
-
     </li>
     
     <li class="p-4 mb-4">
@@ -73,7 +93,6 @@ npm install -D tailwindcss npx tailwindcss init Add the paths to all of your tem
 dawn@raspberrypi:/opt/openwrt $ uname -a Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release PRETTY_NAME=&#34;Debian GNU/Linux 12 (bookworm)&#34; NAME=&#34;Debian GNU/Linux&#34; VERSION_ID=&#34;12&#34; VERSION=&#34;12 (bookworm)&#34; VERSION_CODENAME=bookworm ID=debian HOME_URL=&#34;https://www.debian.org/&#34; SUPPORT_URL=&#34;https://www.debian.org/support&#34; BUG_REPORT_URL=&#34;https://bugs.debian.org/&#34; 开启混杂模式 sudo ip link set eth0 promisc on 此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
 创建网络 此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
 sudo docker network create -d macvlan --subnet=192.</p>
-
     </li>
     
     <li class="p-4 mb-4">
@@ -87,14 +106,12 @@ sudo docker network create -d macvlan --subnet=192.</p>
 波即是水，粒即是水分子。
 当达到一定质量即为波，仔细观察即是水分子。
 推测其甚至可能还有固态形式。</p>
-
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/">最好的学习是输出</a></h2>
       <time class="text-gray-600">Oct 11, 2023</time>
       <p>最好的学习是输出什么内容而不是学习了什么内容。</p>
-
     </li>
     
     <li class="p-4 mb-4">
@@ -111,24 +128,6 @@ wget git.io/warp.sh sudo bash warp.sh menu 选择：1、4、5；
 1 - 安装 Cloudflare WARP 官方客户端
 4 - 安装 WireGuard 相关组件
 7 - 自动配置 WARP WireGuard 双栈全局网络</p>
-
-    </li>
-    
-    <li class="p-4 mb-4">
-      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/">重要的是去做，从一点点开始</a></h2>
-      <time class="text-gray-600">Mar 26, 2023</time>
-      <p>距离上次发布文章已经过去了一个多月了，博客一直没有更新。
-想着写点什么，随便写什么都可以，文笔虽然不好，也没什么。
-重要的是去做，去行动起来，从一点点开始，渐渐地养成习惯。</p>
-
-    </li>
-    
-    <li class="p-4 mb-4">
-      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/">为 Git 添加签名验证信息</a></h2>
-      <time class="text-gray-600">Feb 6, 2023</time>
-      <p>有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作：
-gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. Please select what kind of key you want: (1) RSA and RSA (default) (2) DSA and Elgamal (3) DSA (sign only) (4) RSA (sign only) (14) Existing key from card Your selection?</p>
-
     </li>
     
   </ul>
@@ -156,7 +155,7 @@ gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Soft
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
         <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
-            <a href="https://github.com/acdiost/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+            <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>
             <span class="text-slate-300">|</span>
             <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
