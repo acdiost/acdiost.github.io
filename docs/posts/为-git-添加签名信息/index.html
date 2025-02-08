@@ -14,7 +14,68 @@
 
     
     <meta name="description" content="有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作：
-gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it. There is NO WARRANTY, to the extent permitted by law. Please select what kind of key you want: (1) RSA and RSA (default) (2) DSA and Elgamal (3) DSA (sign only) (4) RSA (sign only) (14) Existing key from card Your selection?" />
+gpg --full-generate-key
+
+gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+
+Your selection? # 输入 Enter
+
+RSA keys may be between 1024 and 4096 bits long.
+
+What keysize do you want? (3072) 4096 # 输入 4096
+
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
+
+Key is valid for? (0) # 输入 Enter
+
+Key does not expire at all
+
+Is this correct? (y/N) y # 输入 y
+
+GnuPG needs to construct a user ID to identify your key. # 输入个人资料
+
+Real name: acdiost
+Email address: acdiost@email.com
+Comment:
+You selected this USER-ID:
+    &#34;acdiost &lt;acdiost@email.com&gt;&#34;
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O # 输入 O
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy. # 在弹出窗口中设置密码
+
+gpg --list-secret-keys --keyid-format=long # 列出 gpg key 信息
+
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+/c/Users/Dawn/.gnupg/pubring.kbx
+--------------------------------
+sec   rsa4096/73DFAAC188F713EE 2023-02-06 [SC] # 此处为 ID
+      xxxxxxx
+uid                 [ultimate] acdiost &lt;acdiost@email.com&gt;
+ssb   rsa4096/BC06DE040749ABCA 2023-02-06 [E]
+
+gpg --armor --export 73DFAAC188F713EE # 导出秘钥
+将打印的秘钥复制至 GitHub 的 GPG keys 中" />
     <meta name="author" content="Dawn`s Blog" />
     
 
@@ -147,7 +208,7 @@ gpg --full-generate-key gpg (GnuPG) 2.2.23-unknown; Copyright (C) 2020 Free Soft
 
         </div><footer class="w-full py-4">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
-        <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
+        <div>&copy; 2025 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
             <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>

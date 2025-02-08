@@ -13,10 +13,34 @@
     
 
     
-    <meta name="description" content="树莓派 4B docker openwrt 软路由快速配置 安装前提 Docker curl -fsSL https://get.docker.com -o get-docker.sh sudo sh get-docker.sh 我使用的系统环境是
-dawn@raspberrypi:/opt/openwrt $ uname -a Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1&#43;rpt2 (2023-10-05) aarch64 GNU/Linux dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release PRETTY_NAME=&#34;Debian GNU/Linux 12 (bookworm)&#34; NAME=&#34;Debian GNU/Linux&#34; VERSION_ID=&#34;12&#34; VERSION=&#34;12 (bookworm)&#34; VERSION_CODENAME=bookworm ID=debian HOME_URL=&#34;https://www.debian.org/&#34; SUPPORT_URL=&#34;https://www.debian.org/support&#34; BUG_REPORT_URL=&#34;https://bugs.debian.org/&#34; 开启混杂模式 sudo ip link set eth0 promisc on 此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
-创建网络 此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
-sudo docker network create -d macvlan --subnet=192." />
+    <meta name="description" content="树莓派 4B docker openwrt 软路由快速配置
+安装前提
+
+Docker
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+我使用的系统环境是
+dawn@raspberrypi:/opt/openwrt $ uname -a
+Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1&#43;rpt2 (2023-10-05) aarch64 GNU/Linux
+
+dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release 
+PRETTY_NAME=&#34;Debian GNU/Linux 12 (bookworm)&#34;
+NAME=&#34;Debian GNU/Linux&#34;
+VERSION_ID=&#34;12&#34;
+VERSION=&#34;12 (bookworm)&#34;
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL=&#34;https://www.debian.org/&#34;
+SUPPORT_URL=&#34;https://www.debian.org/support&#34;
+BUG_REPORT_URL=&#34;https://bugs.debian.org/&#34;
+开启混杂模式
+sudo ip link set eth0 promisc on
+此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
+创建网络
+此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
+sudo docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 openwrt-wan
+此命令使用 macvlan 驱动程序创建一个名为 openwrt-wan 的 Docker 网络。 它通过 Raspberry Pi 上的 eth0 有效地将 Docker 容器桥接到物理网络。" />
     <meta name="author" content="Dawn`s Blog" />
     
 
@@ -160,7 +184,7 @@ sudo docker network create -d macvlan --subnet=192." />
 
         </div><footer class="w-full py-4">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
-        <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
+        <div>&copy; 2025 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
             <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>

@@ -59,74 +59,179 @@
   <ul>
     
     <li class="p-4 mb-4">
-      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%A6%BB%E8%81%8C%E4%BA%86/">今天我离职了</a></h2>
-      <time class="text-gray-600">Mar 19, 2024</time>
-      <p>今天我从公司离职了，在这个公司外包工作了一年。
-之所以是外包，是因为当时学历 ( 高中[大专在读，现 2024 已毕业，自考本科中] ) 不够要求，无法进入到公司 ( 中国电子，子公司 ) 内部成为正式员工，所以只能以外包的形式进入。
-如何进入此公司的？ 因为我和现在公司的大多成员都是上家公司 ( 电科云，子公司[已破产] ) 共事的同事。 大家对我的技术和工作能力的认可，其次是对平台的熟悉程度较高 ( 上家公司的公安政法业务转到了这边进行维护开发 ) 。
-为何离职？ 因为长期拖欠工资 ( 8 个月[包含现在的 3 月] ) 而离职，走了被迫离职的方式，进行了劳动仲裁。 在上家公司也是因为拖欠工资 ( 6 个月 ) 而被迫离职，我这两年相当于白打工了，感觉非常的惨。
-为什么坚持了这么久还不走？ 外包公司在入职早期的时候，正常发放了两个月工资，中期开始延迟发放零散的工资，后期 12 月发了一个月工资，勉强维持起日常开支。 我在年前就想走的了，但是 11 月发了部分和 12 月发了一次，就等着过春节会发放部分。结果未收到发放的工资，就有决心要离开了。 我和另外的外包同事也在积极沟通打款的事宜，一直拖着，说在走流程。至今也未能给到准确的时间打款，连公司正式员工也出现了拖欠工资的情况了，只发基本生活的工资 ( 两千多 ) 。
-在这个公司工作收获了什么？ 我想我在这个公司的收获是微乎其微的，大多是将上家公司积累的工作经验在这个公司应用。
-未来打算？ 随着 AI 技术的发展，想要投身到 AI 技术在 Web3 领域的应用中。
-为什么选择这个方向？ AI 在未来是大势所趋，Web3 也将拥抱 AI，在国内限制的情况下，区块链技术我认为依然算是早期，将先进技术应用在 Web3 领域进行布道，是我很想做的事，并认为其仍有很大发展空间。
-我以前是做什么的？ 进入互联网行业也是误打误撞，找工作偶然通过培训机构 ( Java 培训 ) 进入的这个行业，并爱上了它。 早期有一年的 Java 开发经验和两年的 IT 系统管理经验。中后期开始接触运维相关的工作，有 5 年的运维管理经验。 现如今在学习区块链和 AI 相关的技术。</p>
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/macos/">MacOS</a></h2>
+      <time class="text-gray-600">Nov 16, 2024</time>
+      <p><p>记录一下新到的 MacOS 软件安装</p>
+<h4 id="homebrew">Homebrew</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bin/bash -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39;</span> &gt;&gt; /Users/dawn/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#39;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="basic">Basic</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install font-lxgw-wenkai
+</span></span><span style="display:flex;"><span>brew install tmux
+</span></span><span style="display:flex;"><span>brew install git
+</span></span></code></pre></div><h4 id="oh-my-zsh">Oh my zsh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+</span></span></code></pre></div><h4 id="podman">Podman</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install podman
+</span></span><span style="display:flex;"><span>podman machine init
+</span></span><span style="display:flex;"><span>podman machine start
+</span></span></code></pre></div><h4 id="输入法">输入法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install --cask squirrel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> git@github.com:acdiost/oh-my-rime.git ~/Library/Rime
+</span></span></code></pre></div><h4 id="nodejs">Nodejs</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install node@22
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;/opt/homebrew/opt/node@22/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="rust">Rust</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install rust
+</span></span></code></pre></div><h4 id="python">Python</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install python@3.13
+</span></span><span style="display:flex;"><span>pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/
+</span></span></code></pre></div><h4 id="go">Go</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install go
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GOPATH=</span>$HOME<span style="color:#e6db74">/go&#34;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GO111MODULE=on&#34;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GOPROXY=https://goproxy.cn,direct&#34;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="java">Java</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install java
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;/opt/homebrew/opt/openjdk/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>brew install maven
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置文件</span>
+</span></span><span style="display:flex;"><span>/opt/homebrew/Cellar/maven/3.9.9/libexec/conf/settings.xml
+</span></span></code></pre></div><h4 id="syncthing">Syncthing</h4>
+<p>使用 Syncthing 同步文件</p></p>
     </li>
     
     <li class="p-4 mb-4">
-      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/about/">关于我</a></h2>
-      <time class="text-gray-600">Feb 19, 2024</time>
-      <p>Hello, my name is Dawn.</p>
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%A6%BB%E8%81%8C%E4%BA%86/">今天我离职了</a></h2>
+      <time class="text-gray-600">Mar 19, 2024</time>
+      <p><p>今天我从公司离职了，在这个公司外包工作了一年。</p>
+<p>之所以是外包，是因为当时学历 ( 高中[大专在读，现 2024 已毕业，自考本科中] ) 不够要求，无法进入到公司 ( 中国电子，子公司 ) 内部成为正式员工，所以只能以外包的形式进入。</p>
+<h4 id="如何进入此公司的">如何进入此公司的？</h4>
+<p>因为我和现在公司的大多成员都是上家公司 ( 电科云，子公司[已破产] ) 共事的同事。
+大家对我的技术和工作能力的认可，其次是对平台的熟悉程度较高 ( 上家公司的公安政法业务转到了这边进行维护开发 ) 。</p>
+<h4 id="为何离职">为何离职？</h4>
+<p>因为长期拖欠工资 ( 8 个月[包含现在的 3 月] ) 而离职，走了被迫离职的方式，进行了劳动仲裁。
+在上家公司也是因为拖欠工资 ( 6 个月 ) 而被迫离职，我这两年相当于白打工了，感觉非常的惨。</p>
+<h4 id="为什么坚持了这么久还不走">为什么坚持了这么久还不走？</h4>
+<p>外包公司在入职早期的时候，正常发放了两个月工资，中期开始延迟发放零散的工资，后期 12 月发了一个月工资，勉强维持起日常开支。
+我在年前就想走的了，但是 11 月发了部分和 12 月发了一次，就等着过春节会发放部分。结果未收到发放的工资，就有决心要离开了。
+我和另外的外包同事也在积极沟通打款的事宜，一直拖着，说在走流程。至今也未能给到准确的时间打款，连公司正式员工也出现了拖欠工资的情况了，只发基本生活的工资 ( 两千多 ) 。</p>
+<h4 id="在这个公司工作收获了什么">在这个公司工作收获了什么？</h4>
+<p>我想我在这个公司的收获是微乎其微的，大多是将上家公司积累的工作经验在这个公司应用。</p>
+<h4 id="未来打算">未来打算？</h4>
+<p>随着 AI 技术的发展，想要投身到 AI 技术在 Web3 领域的应用中。</p>
+<h4 id="为什么选择这个方向">为什么选择这个方向？</h4>
+<p>AI 在未来是大势所趋，Web3 也将拥抱 AI，在国内限制的情况下，区块链技术我认为依然算是早期，将先进技术应用在 Web3 领域进行布道，是我很想做的事，并认为其仍有很大发展空间。</p>
+<h4 id="我以前是做什么的">我以前是做什么的？</h4>
+<p>进入互联网行业也是误打误撞，找工作偶然通过培训机构 ( Java 培训 ) 进入的这个行业，并爱上了它。
+早期有一年的 Java 开发经验和两年的 IT 系统管理经验。中后期开始接触运维相关的工作，有 5 年的运维管理经验。
+现如今在学习区块链和 AI 相关的技术。</p></p>
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/">写了一个 hugo 主题</a></h2>
       <time class="text-gray-600">Feb 8, 2024</time>
-      <p>在上个月末，我突发奇想，决定自己结合 ChatGPT 写一个 Hugo 主题。 最开始通过网上的几个视频教程学习，如何创建主题开始一个 Hello world， 再参考其他主题的语法，把基础的几个页面架子搭建出来了。
-然后开始学习 Tailwindcss，也间接了解了 Unocss。
-最后通过和 ChatGPT 的对话，写了三遍，我成功地完成了此主题编写。
-期间因为工作、其他事情的耽搁，花费了将近半个月才把这个主题完全写好。
-前前后后总耗时预计为两天。
-整个页面布局简单
-兼容手机
-文章字体使用落霞文楷，更契合汉字美感
-将字体调整大，为大多近视的人提供更好的阅读体验</p>
+      <p><p>在上个月末，我突发奇想，决定自己结合 ChatGPT 写一个 Hugo 主题。
+最开始通过网上的几个视频教程学习，如何创建主题开始一个 Hello world，
+再参考其他主题的语法，把基础的几个页面架子搭建出来了。</p>
+<p>然后开始学习 Tailwindcss，也间接了解了 Unocss。</p>
+<p>最后通过和 ChatGPT 的对话，写了三遍，我成功地完成了此主题编写。</p>
+<p>期间因为工作、其他事情的耽搁，花费了将近半个月才把这个主题完全写好。</p>
+<p>前前后后总耗时预计为两天。</p>
+<hr>
+<p>整个页面布局简单<br>
+兼容手机<br>
+文章字体使用落霞文楷，更契合汉字美感<br>
+将字体调整大，为大多近视的人提供更好的阅读体验</p></p>
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/use_tailwindcss/">Use_tailwindcss</a></h2>
       <time class="text-gray-600">Feb 1, 2024</time>
-      <p>安装 hugo new theme acdiost-theme 创建主题后进入 cd themes/acdiost-theme 目录
-Install Tailwind CSS Install tailwindcss via npm, and create your tailwind.config.js file.
-npm install -D tailwindcss npx tailwindcss init Add the paths to all of your template files in your tailwind.config.js file.
-/** @type {import(&#39;tailwindcss&#39;).Config} */ module.exports = { content: [&#34;./layouts/**/*.{html,js}&#34;], theme: { extend: {}, }, plugins: [], } Add the @tailwind directives for each of Tailwind’s layers to your main CSS file.</p>
+      <p><h2 id="安装">安装</h2>
+<p><code>hugo new theme acdiost-theme</code> 创建主题后进入 <code>cd themes/acdiost-theme</code> 目录</p>
+<p>Install Tailwind CSS
+Install tailwindcss via npm, and create your tailwind.config.js file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -D tailwindcss
+</span></span><span style="display:flex;"><span>npx tailwindcss init
+</span></span></code></pre></div><p>Add the paths to all of your template files in your tailwind.config.js file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/** @type {import(&#39;tailwindcss&#39;).Config} */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./layouts/**/*.{html,js}&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">theme</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extend</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Add the @tailwind directives for each of Tailwind’s layers to your main CSS file.</p></p>
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BD%AF%E8%B7%AF%E7%94%B1/">树莓派软路由</a></h2>
       <time class="text-gray-600">Dec 20, 2023</time>
-      <p>树莓派 4B docker openwrt 软路由快速配置 安装前提 Docker curl -fsSL https://get.docker.com -o get-docker.sh sudo sh get-docker.sh 我使用的系统环境是
-dawn@raspberrypi:/opt/openwrt $ uname -a Linux raspberrypi 6.1.0-rpi4-rpi-v8 #1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release PRETTY_NAME=&#34;Debian GNU/Linux 12 (bookworm)&#34; NAME=&#34;Debian GNU/Linux&#34; VERSION_ID=&#34;12&#34; VERSION=&#34;12 (bookworm)&#34; VERSION_CODENAME=bookworm ID=debian HOME_URL=&#34;https://www.debian.org/&#34; SUPPORT_URL=&#34;https://www.debian.org/support&#34; BUG_REPORT_URL=&#34;https://bugs.debian.org/&#34; 开启混杂模式 sudo ip link set eth0 promisc on 此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。
-创建网络 此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1
-sudo docker network create -d macvlan --subnet=192.</p>
+      <p><h2 id="树莓派-4b-docker-openwrt-软路由快速配置">树莓派 4B docker openwrt 软路由快速配置</h2>
+<h3 id="安装前提">安装前提</h3>
+<ul>
+<li>Docker</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -fsSL https://get.docker.com -o get-docker.sh
+</span></span><span style="display:flex;"><span>sudo sh get-docker.sh
+</span></span></code></pre></div><p>我使用的系统环境是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dawn@raspberrypi:/opt/openwrt $ uname -a
+</span></span><span style="display:flex;"><span>Linux raspberrypi 6.1.0-rpi4-rpi-v8 <span style="color:#75715e">#1 SMP PREEMPT Debian 1:6.1.54-1+rpt2 (2023-10-05) aarch64 GNU/Linux</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dawn@raspberrypi:/opt/openwrt $ cat /etc/os-release 
+</span></span><span style="display:flex;"><span>PRETTY_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Debian GNU/Linux 12 (bookworm)&#34;</span>
+</span></span><span style="display:flex;"><span>NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Debian GNU/Linux&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION_ID<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;12 (bookworm)&#34;</span>
+</span></span><span style="display:flex;"><span>VERSION_CODENAME<span style="color:#f92672">=</span>bookworm
+</span></span><span style="display:flex;"><span>ID<span style="color:#f92672">=</span>debian
+</span></span><span style="display:flex;"><span>HOME_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.debian.org/&#34;</span>
+</span></span><span style="display:flex;"><span>SUPPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.debian.org/support&#34;</span>
+</span></span><span style="display:flex;"><span>BUG_REPORT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://bugs.debian.org/&#34;</span>
+</span></span></code></pre></div><h3 id="开启混杂模式">开启混杂模式</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ip link set eth0 promisc on
+</span></span></code></pre></div><p>此命令将 Raspberry Pi 上的以太网接口 eth0 设置为混杂模式。 在混杂模式下，网络接口可以捕获其所连接的网段上的所有网络流量。</p>
+<h3 id="创建网络">创建网络</h3>
+<p>此网段需要和路由器一致，例如我家的光猫 IP 为 192.168.1.1</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker network create -d macvlan --subnet<span style="color:#f92672">=</span>192.168.1.0/24 --gateway<span style="color:#f92672">=</span>192.168.1.1 -o parent<span style="color:#f92672">=</span>eth0 openwrt-wan
+</span></span></code></pre></div><p>此命令使用 macvlan 驱动程序创建一个名为 openwrt-wan 的 Docker 网络。 它通过 Raspberry Pi 上的 eth0 有效地将 Docker 容器桥接到物理网络。</p></p>
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/">波粒二象性</a></h2>
       <time class="text-gray-600">Oct 14, 2023</time>
-      <p>波粒二象性 什么是波粒二象性？
-波粒二象性（wave-particle duality）指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。【百科】
-波粒二象性是指微观粒子（如光子、电子等）在某些实验条件下既表现出波动性质又表现出粒子性质的现象。这是量子力学的一个基本概念，最早由德国物理学家德布罗意（Louis de Broglie）于1924年提出。【ChatGPT】
-个人不懂相关的知识，粗鄙的愚见：
-它类比就像水和水分子。
-波即是水，粒即是水分子。
-当达到一定质量即为波，仔细观察即是水分子。
-推测其甚至可能还有固态形式。</p>
+      <p><h1 id="波粒二象性">波粒二象性</h1>
+<p>什么是波粒二象性？</p>
+<p>波粒二象性（wave-particle duality）指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。【百科】</p>
+<p>波粒二象性是指微观粒子（如光子、电子等）在某些实验条件下既表现出波动性质又表现出粒子性质的现象。这是量子力学的一个基本概念，最早由德国物理学家德布罗意（Louis de Broglie）于1924年提出。【ChatGPT】</p>
+<p>个人不懂相关的知识，粗鄙的愚见：</p>
+<p>它类比就像水和水分子。</p>
+<p>波即是水，粒即是水分子。</p>
+<p>当达到一定质量即为波，仔细观察即是水分子。</p>
+<p>推测其甚至可能还有固态形式。</p></p>
     </li>
     
     <li class="p-4 mb-4">
       <h2 class="text-xl font-bold"><a class="hover:underline" href="https://acdiost.github.io/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/">最好的学习是输出</a></h2>
       <time class="text-gray-600">Oct 11, 2023</time>
-      <p>最好的学习是输出什么内容而不是学习了什么内容。</p>
+      <p><p>最好的学习是输出什么内容而不是学习了什么内容。</p></p>
     </li>
     
   </ul>
@@ -152,7 +257,7 @@ sudo docker network create -d macvlan --subnet=192.</p>
 
         </div><footer class="w-full py-4">
     <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
-        <div>&copy; 2024 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
+        <div>&copy; 2025 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
         <div class="mt-4 md:mt-0">
             <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
                 ChatGPT</a>

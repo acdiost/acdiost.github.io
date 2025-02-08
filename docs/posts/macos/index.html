@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
+    <link rel="stylesheet" href="/css/tailwind.acdiost.css">
+    <script src="/js/hugo.acdiost.js"></script>
+
+    <title>MacOS - Dawn`s Blog</title>
+
+    
+
+    
+    <meta name="description" content="记录一下新到的 MacOS 软件安装
+Homebrew
+/bin/bash -c &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&#34;
+
+echo &#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39; &gt;&gt; /Users/dawn/.zprofile
+
+echo &#39;export HOMEBREW_PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple&#39; &gt;&gt; ~/.zprofile
+
+echo &#39;export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api&#39; &gt;&gt; ~/.zprofile
+
+echo &#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#39; &gt;&gt; ~/.zprofile
+Basic
+brew install font-lxgw-wenkai
+brew install tmux
+brew install git
+Oh my zsh
+git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+Podman
+brew install podman
+podman machine init
+podman machine start
+输入法
+brew install --cask squirrel
+
+git clone --depth=1 git@github.com:acdiost/oh-my-rime.git ~/Library/Rime
+Nodejs
+brew install node@22
+echo &#39;export PATH=&#34;/opt/homebrew/opt/node@22/bin:$PATH&#34;&#39; &gt;&gt; ~/.zprofile
+Rust
+brew install rust
+Python
+brew install python@3.13
+pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/
+Go
+brew install go
+echo &#34;export GOPATH=$HOME/go&#34; &gt;&gt; ~/.zprofile
+echo &#34;export GO111MODULE=on&#34; &gt;&gt; ~/.zprofile
+echo &#34;export GOPROXY=https://goproxy.cn,direct&#34; &gt;&gt; ~/.zprofile
+Java
+brew install java
+echo &#39;export PATH=&#34;/opt/homebrew/opt/openjdk/bin:$PATH&#34;&#39; &gt;&gt; ~/.zprofile
+
+brew install maven
+# 配置文件
+/opt/homebrew/Cellar/maven/3.9.9/libexec/conf/settings.xml
+Syncthing
+使用 Syncthing 同步文件" />
+    <meta name="author" content="Dawn`s Blog" />
+    
+
+    
+
+</head><body>
+    <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
+  <div class="container mx-auto flex content-around justify-between px-4">
+    <div>
+      <a class="font-bold text-lg" href="https://acdiost.github.io/">Dawn`s Blog</a>
+    </div>
+    <div class="hidden md:block menu">
+      <nav>
+        <ul class="flex justify-end space-x-6">
+          <li><a href="https://github.com/acdiost" target="_blank">GitHub</a></li>
+          <li><a href="/posts/about/">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="block md:hidden">
+      <button id="menu-toggle"
+        class="flex items-center px-3 py-2 border rounded text-gray-800 border-gray-400 hover:text-black hover:border-black">
+        <svg class="h-3 w-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header><div id="content" class="flex-grow flex items-center justify-center">
+
+<div class="container p-4 mx-auto w-full md:w-1/2">
+    <article class="prose sm:prose-lg md:prose-x">
+        <header class="mb-4">
+            <h1 class="mt-10 text-4xl">MacOS</h1>
+            
+            <div class="py-4">
+                
+                <time>Nov 16, 2024</time>
+                
+            </div>
+            
+        </header>
+
+        <section class="mb-16 text-[1.3rem]"
+            style="font-family: 'LXGW WenKai Lite', sans-serif; line-height: 2.0rem; letter-spacing: 0.07rem;"><p>记录一下新到的 MacOS 软件安装</p>
+<h4 id="homebrew">Homebrew</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/bin/bash -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39;</span> &gt;&gt; /Users/dawn/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_API_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#39;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="basic">Basic</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install font-lxgw-wenkai
+</span></span><span style="display:flex;"><span>brew install tmux
+</span></span><span style="display:flex;"><span>brew install git
+</span></span></code></pre></div><h4 id="oh-my-zsh">Oh my zsh</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+</span></span></code></pre></div><h4 id="podman">Podman</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install podman
+</span></span><span style="display:flex;"><span>podman machine init
+</span></span><span style="display:flex;"><span>podman machine start
+</span></span></code></pre></div><h4 id="输入法">输入法</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install --cask squirrel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git clone --depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> git@github.com:acdiost/oh-my-rime.git ~/Library/Rime
+</span></span></code></pre></div><h4 id="nodejs">Nodejs</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install node@22
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;/opt/homebrew/opt/node@22/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="rust">Rust</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install rust
+</span></span></code></pre></div><h4 id="python">Python</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install python@3.13
+</span></span><span style="display:flex;"><span>pip3 config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/
+</span></span></code></pre></div><h4 id="go">Go</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install go
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GOPATH=</span>$HOME<span style="color:#e6db74">/go&#34;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GO111MODULE=on&#34;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;export GOPROXY=https://goproxy.cn,direct&#34;</span> &gt;&gt; ~/.zprofile
+</span></span></code></pre></div><h4 id="java">Java</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install java
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export PATH=&#34;/opt/homebrew/opt/openjdk/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>brew install maven
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置文件</span>
+</span></span><span style="display:flex;"><span>/opt/homebrew/Cellar/maven/3.9.9/libexec/conf/settings.xml
+</span></span></code></pre></div><h4 id="syncthing">Syncthing</h4>
+<p>使用 Syncthing 同步文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install --cask syncthing
+</span></span><span style="display:flex;"><span>brew services start syncthing
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http://127.0.0.1:8384
+</span></span></code></pre></div><h4 id="keepassxc">keepassxc</h4>
+<p>密码管理工具</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install --cask keepassxc
+</span></span></code></pre></div></section>
+
+        
+    </article>
+
+    <nav class="my-12 flex justify-between">
+        
+        
+        
+        <a href="https://acdiost.github.io/posts/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%A6%BB%E8%81%8C%E4%BA%86/"><span class="font-bold text-[#161823]"> 今天我离职了 </span></a>
+        
+    </nav>
+</div>
+
+
+        </div><footer class="w-full py-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+        <div>&copy; 2025 <a href="https://acdiost.github.io/">Dawn`s Blog</a></div>
+        <div class="mt-4 md:mt-0">
+            <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+                ChatGPT</a>
+            <span class="text-slate-300">|</span>
+            <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
+        </div>
+    </div>
+</footer></main>
+</body>
+
+</html>
