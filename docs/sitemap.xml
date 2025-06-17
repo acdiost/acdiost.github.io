@@ -2,47 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://acdiost.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-11-16T22:37:34+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/macos/</loc>
+    <loc>http://localhost:1313/posts/macos/</loc>
     <lastmod>2024-11-16T22:37:34+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-11-16T22:37:34+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%A6%BB%E8%81%8C%E4%BA%86/</loc>
+    <loc>http://localhost:1313/posts/%E4%BB%8A%E5%A4%A9%E6%88%91%E7%A6%BB%E8%81%8C%E4%BA%86/</loc>
     <lastmod>2024-03-19T21:27:12+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/</loc>
+    <loc>http://localhost:1313/posts/about/</loc>
+    <lastmod>2024-02-19T20:03:04+08:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AAhugo%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2024-02-08T22:14:09+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/use_tailwindcss/</loc>
+    <loc>http://localhost:1313/posts/use_tailwindcss/</loc>
     <lastmod>2024-02-01T22:11:29+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
+    <loc>http://localhost:1313/posts/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%BD%AF%E8%B7%AF%E7%94%B1/</loc>
     <lastmod>2023-12-20T21:24:59+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</loc>
+    <loc>http://localhost:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</loc>
     <lastmod>2023-10-14T19:56:53+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/</loc>
+    <loc>http://localhost:1313/posts/%E6%9C%80%E5%A5%BD%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%98%AF%E8%BE%93%E5%87%BA/</loc>
     <lastmod>2023-10-11T20:26:14+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0-cloudflare-wrap/</loc>
+    <loc>http://localhost:1313/posts/%E4%B8%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0-cloudflare-wrap/</loc>
     <lastmod>2023-04-05T10:42:09+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</loc>
+    <loc>http://localhost:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</loc>
     <lastmod>2023-03-26T21:35:00+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/</loc>
+    <loc>http://localhost:1313/posts/%E4%B8%BA-git-%E6%B7%BB%E5%8A%A0%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF/</loc>
     <lastmod>2023-02-06T10:50:22+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/posts/my-first-post/</loc>
+    <loc>http://localhost:1313/posts/my-first-post/</loc>
     <lastmod>2023-02-03T12:27:12+08:00</lastmod>
   </url><url>
-    <loc>https://acdiost.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://acdiost.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

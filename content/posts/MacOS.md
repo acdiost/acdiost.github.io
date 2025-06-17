@@ -40,12 +40,10 @@ git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-m
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 ```
 
-#### Podman
+#### OrbStack
 
 ```bash
-brew install podman
-podman machine init
-podman machine start
+brew install orbstack
 ```
 
 #### 输入法

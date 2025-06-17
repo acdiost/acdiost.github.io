@@ -4,7 +4,7 @@ date: 2023-02-06T10:50:22+08:00
 draft: false
 ---
 
-有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作：
+有时候我们能在 GitHub 上看到有的项目在提交信息中有 Verified 的绿色签名验证框，在一些大型项目中，此签名信息是必须的，否则无法提交相关的代码在项目中。下面是在 Git Bash 中的配置操作(`brew install gnupg` on MacOS)：
 
 ```bash
 gpg --full-generate-key
