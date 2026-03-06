@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <div class="container p-4 mx-auto {{ if not .IsHome }}w-full md:w-1/2{{ else }}w-full{{ end }}">
-    <article class="prose sm:prose-lg md:prose-x">
+    <article class="article-content">
         <header class="mb-4">
             <h1 class="mt-10 text-4xl">{{ .Title }}</h1>
             {{ if ne .Type "page" }}
