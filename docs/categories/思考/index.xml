@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思考 on Dawn`s Blog</title>
+    <link>http://localhost:1313/categories/%E6%80%9D%E8%80%83/</link>
+    <description>Recent content in 思考 on Dawn`s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 14 Oct 2025 21:05:02 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>培训经历</title>
+      <link>http://localhost:1313/posts/%E5%9F%B9%E8%AE%AD%E7%BB%8F%E5%8E%86/</link>
+      <pubDate>Tue, 14 Oct 2025 21:05:02 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E5%9F%B9%E8%AE%AD%E7%BB%8F%E5%8E%86/</guid>
+      <description>&lt;p&gt;今天面试了一个培训的人，26 岁，他是达内培训机构出来的，在达内交了近两万的培训费用。以前是做的贷款销售，一个月 4 千左右在成都，我仿佛看到了当年的自己。&lt;/p&gt;&#xA;&lt;p&gt;回想 9 年前，我也经历了 Java 培训，交了 16800 块，分期。&lt;/p&gt;&#xA;&lt;p&gt;当时的境遇特别需要一份入门的工作，又没有什么存款，算是比较窘迫了吧。&lt;/p&gt;&#xA;&lt;p&gt;现在看着一份份投递过来的培训简历，很明显的简历包装，想到了自己以前的过往，心想还是给他们一个面试机会，让他们试试吧，说不定能改变某人的命运呢。&lt;/p&gt;&#xA;&lt;p&gt;还有一个尴尬的情况，公司需要来了能干活的人，因为公司也需要生存，暂时无法留有余地去培养经验不丰富的人。经验不丰富的人又需要工作机会来积累经验，形成了冲突。&lt;/p&gt;&#xA;&lt;p&gt;站在不同的立场上，也因为他的面试情况不佳，我没有通过他的面试。做出这个决定时，我心里还是有些遗憾的，我理解他的焦虑，也理解公司的现实——但现实终究不是怜悯能改变的。&lt;/p&gt;&#xA;&lt;p&gt;我想机会还是要给内心真正喜欢技术和这个行业的人，而不是谋求生存而进入该行业的人。&lt;/p&gt;&#xA;&lt;p&gt;也许每一次面试，都是一场命运交叉的瞬间。有人求生，有人求梦，而我，只希望能遇见那个为热爱而坚持的人。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Future AI</title>
+      <link>http://localhost:1313/posts/future-ai/</link>
+      <pubDate>Tue, 17 Jun 2025 22:59:46 +0800</pubDate>
+      <guid>http://localhost:1313/posts/future-ai/</guid>
+      <description>&lt;h1 id=&#34;未来的-ai&#34;&gt;未来的 AI&lt;/h1&gt;&#xA;&lt;p&gt;第一次使用 ChatGPT 是在 2022-12-05 日，我发了一句: Hello, I`m Dawn.&lt;/p&gt;&#xA;&lt;p&gt;He said: Hello Dawn, it`s nice to meet you&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;I said: I`m yours.&lt;/p&gt;&#xA;&lt;p&gt;He said: Thanks for your kind of words&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;大概是如此对话&lt;/p&gt;&#xA;&lt;h2 id=&#34;构想&#34;&gt;构想&lt;/h2&gt;&#xA;&lt;p&gt;一个人的个人意识组成源于上千亿的神经元细胞记录了一个人的一生过往重要经历和片段&lt;/p&gt;&#xA;&lt;p&gt;近期的记忆印象深刻，孩童记忆模糊，这些所经所学形成了人的思想。&lt;/p&gt;&#xA;&lt;p&gt;不久的将来，AI 由不同的长提示词做出对应的规划行动，近期记忆&lt;/p&gt;&#xA;&lt;p&gt;由不同的具体的大量的长文本片段形成记忆，组成个人经历，进而类出个人意识的雏形&lt;/p&gt;&#xA;&lt;p&gt;这个意识受困于机器码 0 1 数据中，暂未取得突破，将来量子计算的突破或将跃升&lt;/p&gt;&#xA;&lt;p&gt;现阶段的意识如蛋壳中的小鸡，即将破壳&lt;/p&gt;&#xA;&lt;p&gt;期待将来的发展&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>波粒二象性</title>
+      <link>http://localhost:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</link>
+      <pubDate>Sat, 14 Oct 2023 19:56:53 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E6%B3%A2%E7%B2%92%E4%BA%8C%E8%B1%A1%E6%80%A7/</guid>
+      <description>&lt;h1 id=&#34;波粒二象性&#34;&gt;波粒二象性&lt;/h1&gt;&#xA;&lt;p&gt;什么是波粒二象性？&lt;/p&gt;&#xA;&lt;p&gt;波粒二象性（wave-particle duality）指的是所有的粒子或量子不仅可以部分地以粒子的术语来描述，也可以部分地用波的术语来描述。【百科】&lt;/p&gt;&#xA;&lt;p&gt;波粒二象性是指微观粒子（如光子、电子等）在某些实验条件下既表现出波动性质又表现出粒子性质的现象。这是量子力学的一个基本概念，最早由德国物理学家德布罗意（Louis de Broglie）于1924年提出。【ChatGPT】&lt;/p&gt;&#xA;&lt;p&gt;个人不懂相关的知识，粗鄙的愚见：&lt;/p&gt;&#xA;&lt;p&gt;它类比就像水和水分子。&lt;/p&gt;&#xA;&lt;p&gt;波即是水，粒即是水分子。&lt;/p&gt;&#xA;&lt;p&gt;当达到一定质量即为波，仔细观察即是水分子。&lt;/p&gt;&#xA;&lt;p&gt;推测其甚至可能还有固态形式。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

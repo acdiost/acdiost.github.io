@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
+    <link rel="stylesheet" href="/css/tailwind.acdiost.css">
+    <script src="/js/hugo.acdiost.js"></script>
+
+    <title>前端 - Dawn`s Blog</title>
+
+    
+
+    
+    <meta name="description" content="Dawn&#39;s blog" />
+    <meta name="author" content="Dawn`s Blog" />
+    
+
+    
+    <link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/categories/%E5%89%8D%E7%AB%AF/index.xml" title="Dawn`s Blog" />
+    
+
+</head><body>
+    <main class="bg-yellow-50 flex flex-col min-h-screen"><header class="w-full py-4">
+  <div class="container mx-auto flex content-around justify-between px-4">
+    <div>
+      <a class="font-bold text-lg" href="http://localhost:1313/">Dawn`s Blog</a>
+    </div>
+    <div class="hidden md:block menu">
+      <nav>
+        <ul class="flex justify-end space-x-6">
+          <li><a href="/categories/">Categories</a></li>
+          <li><a href="https://github.com/acdiost" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="/posts/about/">About Me</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="block md:hidden">
+      <button id="menu-toggle"
+        class="flex items-center px-3 py-2 border rounded text-gray-800 border-gray-400 hover:text-black hover:border-black">
+        <svg class="h-3 w-3 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <title>Menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="content" class="flex-grow flex items-center justify-center">
+
+
+
+
+
+<section class="container mx-auto w-full md:w-1/2">
+  
+  
+  <h1 class="text-xl p-4"><span>Category: </span> 前端 </h1>
+  
+
+  <ul>
+    
+    <li class="p-4 mb-4">
+      <h2 class="text-xl font-bold"><a class="hover:underline" href="http://localhost:1313/posts/use_tailwindcss/">Use_tailwindcss</a></h2>
+      <time class="text-gray-600">Feb 1, 2024</time>
+      <p><h2 id="安装">安装</h2>
+<p><code>hugo new theme acdiost-theme</code> 创建主题后进入 <code>cd themes/acdiost-theme</code> 目录</p>
+<p>Install Tailwind CSS
+Install tailwindcss via npm, and create your tailwind.config.js file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install -D tailwindcss
+</span></span><span style="display:flex;"><span>npx tailwindcss init
+</span></span></code></pre></div><p>Add the paths to all of your template files in your tailwind.config.js file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">/** @type {import(&#39;tailwindcss&#39;).Config} */</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">content</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;./layouts/**/*.{html,js}&#34;</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">theme</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">extend</span><span style="color:#f92672">:</span> {},
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [],
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Add the @tailwind directives for each of Tailwind’s layers to your main CSS file.</p></p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        
+        
+        <a class="text-sm px-2 py-1 rounded bg-yellow-100 text-[#7A5D00] hover:underline"
+          href="/categories/%E5%BB%BA%E7%AB%99/">建站</a>
+        
+        <a class="text-sm px-2 py-1 rounded bg-yellow-100 text-[#7A5D00] hover:underline"
+          href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+        
+        
+        
+      </div>
+    </li>
+    
+  </ul>
+  
+
+</section>
+
+
+        </div><footer class="w-full py-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center md:justify-between">
+        <div>&copy; 2026 <a href="http://localhost:1313/">Dawn`s Blog</a></div>
+        <div class="mt-4 md:mt-0">
+            <a href="https://github.com/acdiost/acdiost.github.io/tree/main/themes/acdiost-theme" rel="noopener" target="_blank">Theme Acdiost with
+                ChatGPT</a>
+            <span class="text-slate-300">|</span>
+            <a href="https://gohugo.io/" rel="noopener" target="_blank" class="mr-4">Powered by Hugo</a>
+        </div>
+    </div>
+</footer></main>
+</body>
+
+</html>

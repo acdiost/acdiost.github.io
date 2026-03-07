@@ -2,6 +2,7 @@
 title: "MacOS"
 date: 2024-11-16T22:37:34+08:00
 draft: false 
+categories: ["技术"]
 ---
 
 记录一下新到的 MacOS 软件安装

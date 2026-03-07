@@ -2,6 +2,7 @@
 title: "My First Post"
 date: 2023-02-03T12:27:12+08:00
 draft: false
+categories: ["技术", "随笔"]
 ---
 
 ## Introduction

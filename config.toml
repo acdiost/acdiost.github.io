@@ -3,4 +3,13 @@ languageCode = 'zh-Hans'
 title = 'Dawn`s Blog'
 theme = 'acdiost-theme'
 publishDir = './docs'
-paginate = 7
+
+[pagination]
+pagerSize = 7
+
+[params]
+mainSections = ['posts']
+
+[taxonomies]
+category = 'categories'
+tag = 'tags'

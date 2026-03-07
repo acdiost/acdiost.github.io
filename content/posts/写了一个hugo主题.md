@@ -2,6 +2,7 @@
 title: "写了一个 hugo 主题"
 date: 2024-02-08T22:14:09+08:00
 draft: false
+categories: ["技术", "随笔"]
 ---
 
 在上个月末，我突发奇想，决定自己结合 ChatGPT 写一个 Hugo 主题。

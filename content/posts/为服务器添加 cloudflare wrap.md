@@ -2,6 +2,7 @@
 title: "为服务器添加 Cloudflare Wrap"
 date: 2023-04-05T10:42:09+08:00
 draft: flase
+categories: ["技术"]
 ---
 
 Cloudflare WARP 是 Cloud­flare 提供的一项基于 Wire­Guard 的网络流量安全及加速服务，能够让你通过连接到 Cloud­flare 的边缘节点实现隐私保护及链路优化。

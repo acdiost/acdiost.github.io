@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>成长 on Dawn`s Blog</title>
+    <link>http://localhost:1313/categories/%E6%88%90%E9%95%BF/</link>
+    <description>Recent content in 成长 on Dawn`s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 26 Mar 2023 21:35:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%88%90%E9%95%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>重要的是去做，从一点点开始</title>
+      <link>http://localhost:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Sun, 26 Mar 2023 21:35:00 +0800</pubDate>
+      <guid>http://localhost:1313/posts/%E9%87%8D%E8%A6%81%E7%9A%84%E6%98%AF%E5%8E%BB%E5%81%9A%E4%BB%8E%E4%B8%80%E7%82%B9%E7%82%B9%E5%BC%80%E5%A7%8B/</guid>
+      <description>&lt;p&gt;距离上次发布文章已经过去了一个多月了，博客一直没有更新。&lt;/p&gt;&#xA;&lt;p&gt;想着写点什么，随便写什么都可以，文笔虽然不好，也没什么。&lt;/p&gt;&#xA;&lt;p&gt;重要的是去做，去行动起来，从一点点开始，渐渐地养成习惯。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

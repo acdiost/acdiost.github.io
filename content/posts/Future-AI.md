@@ -2,6 +2,7 @@
 title: "Future AI"
 date: 2025-06-17T22:59:46+08:00
 draft: true
+categories: ["技术", "学习"]
 ---
 
 # 未来的 AI

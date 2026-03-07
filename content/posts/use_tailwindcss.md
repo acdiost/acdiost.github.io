@@ -2,6 +2,7 @@
 title: "Use_tailwindcss"
 date: 2024-02-01T22:11:29+08:00
 draft: false
+categories: ["技术"]
 ---
 
 ## 安装
