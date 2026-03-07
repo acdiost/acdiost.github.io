@@ -17,10 +17,15 @@
             style="font-family: 'LXGW WenKai Lite', sans-serif; line-height: 2.0rem; letter-spacing: 0.07rem;">{{
             .Content }}</section>
 
-        {{ if .Params.tags }}
-        <footer class="my-16 mx-4">
-            {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
-            <a href="{{ $href }}">{{ . }}</a>
+        {{ if or .Params.categories .Params.tags }}
+        <footer class="my-16 mx-4 flex flex-wrap gap-3">
+            {{ range .Params.categories }}
+            <a class="text-sm px-3 py-1 rounded bg-yellow-100 text-[#7A5D00] hover:underline"
+                href="{{ (printf "categories/%s/" (urlize .)) | relURL }}">{{ . }}</a>
+            {{ end }}
+            {{ range .Params.tags }}
+            <a class="text-sm px-3 py-1 rounded bg-slate-100 text-slate-700 hover:underline"
+                href="{{ (printf "tags/%s/" (urlize .)) | relURL }}">{{ . }}</a>
             {{ end }}
         </footer>
         {{ end }}
