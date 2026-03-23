@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>随笔 on Dawn`s Blog</title>
+    <link>http://localhost:1313/tags/%E9%9A%8F%E7%AC%94/</link>
+    <description>Recent content in 随笔 on Dawn`s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Mon, 23 Mar 2026 23:07:07 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E9%9A%8F%E7%AC%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2026 03 23</title>
+      <link>http://localhost:1313/posts/2026-03-23/</link>
+      <pubDate>Mon, 23 Mar 2026 23:07:07 +0800</pubDate>
+      <guid>http://localhost:1313/posts/2026-03-23/</guid>
+      <description>&lt;p&gt;公司拖欠了的工资终于是开始打钱了，前前后后耗时一年半。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
