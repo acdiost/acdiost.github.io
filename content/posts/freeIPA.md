@@ -761,6 +761,10 @@ ipa sudorule-mod allow-all --hostcat=all
 # 添加用户到 sudo
 ipa sudorule-add-user allow-all --users=dawn
 
+# 取消所有命令，应该已经没有 Command category: all
+ipa sudorule-mod allow-all --cmdcat=
+
+# 改为指定命令
 # 创建命令对象
 ipa sudocmd-add /usr/bin/systemctl
 # 把命令加到规则里
