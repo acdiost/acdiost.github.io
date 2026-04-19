@@ -2,34 +2,32 @@
 
 @layer base {
     h1 {
-        @apply text-6xl;
-    }
-
-    h2 {
-        @apply text-5xl;
-    }
-
-    h3 {
         @apply text-4xl;
     }
 
-    h4 {
+    h2 {
         @apply text-3xl;
     }
 
-    h5 {
+    h3 {
         @apply text-2xl;
     }
 
-    h6 {
+    h4 {
         @apply text-xl;
+    }
+
+    h5 {
+        @apply text-lg;
+    }
+
+    h6 {
+        @apply text-base;
     }
 
     hr {
         @apply my-6;
     }
-
-
 }
 
 @tailwind components;
@@ -39,10 +37,115 @@
         white-space: pre-wrap;
         overflow-x: auto;
         padding: 1em;
-        margin: 1em 0;
+        margin: 0;
         border-radius: 7px;
         line-height: 1.5rem;
         letter-spacing: 0rem;
+    }
+
+    .code-block-wrapper {
+        position: relative;
+        margin: 1em 0;
+    }
+
+    .code-copy-button {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 1;
+        border: 1px solid rgb(148 163 184 / 0.55);
+        border-radius: 9999px;
+        background: rgb(255 251 235 / 0.92);
+        color: rgb(51 65 85);
+        padding: 0.2rem 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        transition: background-color 0.2s ease, color 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .code-copy-button:hover {
+        background: rgb(254 240 138 / 0.95);
+        border-color: rgb(245 158 11 / 0.55);
+    }
+
+    .code-copy-button.is-copied {
+        background: rgb(22 163 74 / 0.14);
+        border-color: rgb(22 163 74 / 0.35);
+        color: rgb(21 128 61);
+    }
+
+    .article-content table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .article-content th,
+    .article-content td {
+        white-space: nowrap;
+    }
+
+    .article-content ul,
+    .article-content ol {
+        margin: 1.25rem 0;
+        padding-left: 1.5rem;
+    }
+
+    .article-content ul {
+        list-style: disc;
+    }
+
+    .article-content ol {
+        list-style: decimal;
+    }
+
+    .article-content li {
+        margin: 0.5rem 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .article-content li > * {
+        max-width: 100%;
+    }
+
+    .article-content li a {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 768px) {
+    .article-content table {
+        font-size: 1rem;
+    }
+
+    .article-content table th,
+    .article-content table td {
+        padding: 0.65rem 0.75rem;
+    }
+}
+
+@media print {
+    .code-copy-button {
+        display: none;
+    }
+
+    .article-content table {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        overflow: visible;
+        font-size: 0.95rem;
+    }
+
+    .article-content th,
+    .article-content td {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 }
 
