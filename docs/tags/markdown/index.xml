@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markdown on Dawn`s Blog</title>
+    <link>http://localhost:1313/tags/markdown/</link>
+    <description>Recent content in Markdown on Dawn`s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Fri, 19 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Table Test</title>
+      <link>http://localhost:1313/posts/table-test/</link>
+      <pubDate>Fri, 19 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/table-test/</guid>
+      <description>&lt;p&gt;This is a test post to verify markdown table rendering functionality.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sample-table&#34;&gt;Sample Table&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Header 1&lt;/th&gt;&#xA;          &lt;th&gt;Header 2&lt;/th&gt;&#xA;          &lt;th&gt;Header 3&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Cell 1&lt;/td&gt;&#xA;          &lt;td&gt;Cell 2&lt;/td&gt;&#xA;          &lt;td&gt;Cell 3&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Cell 4&lt;/td&gt;&#xA;          &lt;td&gt;Cell 5&lt;/td&gt;&#xA;          &lt;td&gt;Cell 6&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Cell 7&lt;/td&gt;&#xA;          &lt;td&gt;Cell 8&lt;/td&gt;&#xA;          &lt;td&gt;Cell 9&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;feature-comparison-table&#34;&gt;Feature Comparison Table&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Feature&lt;/th&gt;&#xA;          &lt;th&gt;Price&lt;/th&gt;&#xA;          &lt;th&gt;Support&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Basic&lt;/td&gt;&#xA;          &lt;td&gt;$9&lt;/td&gt;&#xA;          &lt;td&gt;Email&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Pro&lt;/td&gt;&#xA;          &lt;td&gt;$29&lt;/td&gt;&#xA;          &lt;td&gt;Chat&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Enterprise&lt;/td&gt;&#xA;          &lt;td&gt;$99&lt;/td&gt;&#xA;          &lt;td&gt;Phone&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;data-table&#34;&gt;Data Table&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th&gt;Name&lt;/th&gt;&#xA;          &lt;th&gt;Age&lt;/th&gt;&#xA;          &lt;th&gt;City&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Alice&lt;/td&gt;&#xA;          &lt;td&gt;28&lt;/td&gt;&#xA;          &lt;td&gt;New York&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Bob&lt;/td&gt;&#xA;          &lt;td&gt;35&lt;/td&gt;&#xA;          &lt;td&gt;San Francisco&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Charlie&lt;/td&gt;&#xA;          &lt;td&gt;42&lt;/td&gt;&#xA;          &lt;td&gt;Boston&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td&gt;Diana&lt;/td&gt;&#xA;          &lt;td&gt;31&lt;/td&gt;&#xA;          &lt;td&gt;Seattle&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;p&gt;The table styling should now display with proper borders, alternating row colors, and hover effects.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
