@@ -1,5 +1,5 @@
 baseURL = 'https://acdiost.github.io/'
-languageCode = 'zh-Hans'
+locale = 'zh-Hans'
 title = 'Dawn`s Blog'
 theme = 'acdiost-theme'
 publishDir = './docs'

@@ -9,7 +9,17 @@
 
     <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
 
-    {{ $site_author := or site.Author.name site.Params.name site.Title }}
+    {{ $site_author_param := site.Params.author }}
+    {{ $site_author := site.Title }}
+    {{ if $site_author_param }}
+      {{ if reflect.IsMap $site_author_param }}
+        {{ $site_author = or (index $site_author_param "name") site.Params.name site.Title }}
+      {{ else }}
+        {{ $site_author = or $site_author_param site.Params.name site.Title }}
+      {{ end }}
+    {{ else }}
+      {{ $site_author = or site.Params.name site.Title }}
+    {{ end }}
 
     {{ if eq .Kind "page" }}
     <meta name="description" content="{{ .Summary }}" />
