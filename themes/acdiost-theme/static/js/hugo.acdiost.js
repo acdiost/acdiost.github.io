@@ -31,10 +31,18 @@ document.addEventListener("DOMContentLoaded", function () {
         button.type = "button";
         button.className = "code-copy-button";
         button.setAttribute("aria-label", "复制代码");
-        button.textContent = "复制";
+        const defaultLabel = "复制";
+        button.textContent = defaultLabel;
+        let resetTimeout;
 
         button.addEventListener("click", async function () {
-            const originalLabel = button.textContent;
+            if (button.disabled) {
+                return;
+            }
+
+            window.clearTimeout(resetTimeout);
+            button.disabled = true;
+            button.classList.remove("is-copied");
 
             try {
                 if (navigator.clipboard && window.isSecureContext) {
@@ -46,9 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     textarea.style.position = "absolute";
                     textarea.style.left = "-9999px";
                     document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand("copy");
-                    document.body.removeChild(textarea);
+                    try {
+                        textarea.select();
+                        if (!document.execCommand("copy")) {
+                            throw new Error("Copy command failed");
+                        }
+                    } finally {
+                        document.body.removeChild(textarea);
+                    }
                 }
 
                 button.textContent = "已复制";
@@ -56,10 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
             } catch (error) {
                 console.error("Failed to copy code block", error);
                 button.textContent = "复制失败";
+            } finally {
+                button.disabled = false;
             }
 
-            window.setTimeout(function () {
-                button.textContent = originalLabel;
+            resetTimeout = window.setTimeout(function () {
+                button.textContent = defaultLabel;
                 button.classList.remove("is-copied");
             }, 1800);
         });

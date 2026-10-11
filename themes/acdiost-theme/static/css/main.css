@@ -76,10 +76,31 @@
     }
 
     .article-content table {
+        @apply my-6 w-full border-collapse;
         display: block;
         max-width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .article-content table thead {
+        @apply bg-slate-100;
+    }
+
+    .article-content table th {
+        @apply border border-slate-300 px-4 py-2 text-left font-bold;
+    }
+
+    .article-content table td {
+        @apply border border-slate-300 px-4 py-2;
+    }
+
+    .article-content table tbody tr:nth-child(even) {
+        @apply bg-slate-50;
+    }
+
+    .article-content table tbody tr:hover {
+        @apply bg-slate-100 transition-colors duration-150;
     }
 
     .article-content th,

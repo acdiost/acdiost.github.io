@@ -8,7 +8,9 @@
         <ul class="flex justify-end space-x-6">
           <li><a href="{{ "categories/" | relURL }}">Categories</a></li>
           <li><a href="https://github.com/acdiost" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="{{ "posts/about/" | relURL }}">About Me</a></li>
+          {{- with site.GetPage "/posts/about" }}
+          <li><a href="{{ .RelPermalink }}">About Me</a></li>
+          {{- end }}
         </ul>
       </nav>
     </div>

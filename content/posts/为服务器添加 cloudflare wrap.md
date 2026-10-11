@@ -1,7 +1,7 @@
 ---
 title: "为服务器添加 Cloudflare Wrap"
 date: 2023-04-05T10:42:09+08:00
-draft: flase
+draft: false
 categories: ["技术"]
 ---
 

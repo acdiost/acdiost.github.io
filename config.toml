@@ -3,6 +3,7 @@ locale = 'zh-Hans'
 title = 'Dawn`s Blog'
 theme = 'acdiost-theme'
 publishDir = './docs'
+cleanDestinationDir = true
 
 [pagination]
 pagerSize = 7
