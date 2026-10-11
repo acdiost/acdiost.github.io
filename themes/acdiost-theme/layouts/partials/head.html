@@ -1,36 +1,49 @@
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon.png" | relURL }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
-    <link rel="stylesheet" href="{{ "css/tailwind.acdiost.css" | relURL }}">
-    <script src="{{ "js/hugo.acdiost.js" | relURL }}"></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "images/favicon.png" | relURL }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.min.css">
+  <link rel="stylesheet" href="{{ "css/tailwind.acdiost.css" | relURL }}">
+  <script defer src="{{ "js/hugo.acdiost.js" | relURL }}"></script>
 
-    <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
+  <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ site.Title }}</title>
 
-    {{- $site_author_param := site.Params.author }}
-    {{- $site_author := site.Title }}
-    {{- if $site_author_param }}
-      {{- if reflect.IsMap $site_author_param }}
-        {{- $site_author = or (index $site_author_param "name") site.Params.name site.Title }}
-      {{- else }}
-        {{- $site_author = or $site_author_param site.Params.name site.Title }}
-      {{- end }}
+  {{- $site_author_param := site.Params.author }}
+  {{- $site_author := site.Title }}
+  {{- if $site_author_param }}
+    {{- if reflect.IsMap $site_author_param }}
+      {{- $site_author = or (index $site_author_param "name") site.Params.name site.Title }}
     {{- else }}
-      {{- $site_author = or site.Params.name site.Title }}
+      {{- $site_author = or $site_author_param site.Params.name site.Title }}
     {{- end }}
+  {{- else }}
+    {{- $site_author = or site.Params.name site.Title }}
+  {{- end }}
 
-    {{ if eq .Kind "page" }}
-    <meta name="description" content="{{ .Summary }}" />
-    <meta name="author" content="{{ or .Params.author $site_author }}" />
-    {{ else }}
-    <meta name="description" content="{{ site.Params.description | default (print `Dawn's blog`) }}" />
-    <meta name="author" content="{{ $site_author }}" />
-    {{ end }}
+  {{- $description := site.Params.description | default site.Title }}
+  {{- with .Description }}
+    {{- $description = . }}
+  {{- else }}
+    {{- if .IsPage }}
+      {{- $description = $.Summary }}
+    {{- end }}
+  {{- end }}
+  {{- $description = $description | plainify | htmlUnescape | replaceRE `\s+` ` ` | strings.TrimSpace }}
+  {{- if gt (strings.RuneCount $description) 160 }}
+    {{- $description = printf "%s…" (strings.Substr $description 0 159) }}
+  {{- end }}
+  {{- $canonical := .Permalink }}
+  {{- if in (slice "home" "section" "taxonomy" "term") .Kind }}
+    {{- $paginator := partial "paginator.html" . }}
+    {{- $canonical = $paginator.URL | absURL }}
+  {{- end }}
+  <meta name="description" content="{{ $description }}" />
+  <meta name="author" content="{{ or .Params.author $site_author }}" />
+  <link rel="canonical" href="{{ $canonical }}" />
 
-    {{ range .AlternativeOutputFormats }}
-    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}" />
-    {{ end }}
+  {{ range .AlternativeOutputFormats }}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}" />
+  {{ end }}
 
 </head>

@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "build:css": "tailwindcss -i static/css/main.css -o static/css/tailwind.acdiost.css --minify",
+    "dev:css": "tailwindcss -i static/css/main.css -o static/css/tailwind.acdiost.css --watch"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   }

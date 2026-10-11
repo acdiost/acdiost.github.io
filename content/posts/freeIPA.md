@@ -1,5 +1,6 @@
 ---
 title: "FreeIPA 完整部署指南：从零到一的集中认证方案"
+description: "从环境准备、服务安装到客户端接入，介绍 FreeIPA 集中身份认证的部署步骤、SSH 与 sudo 管理及常见问题排查。"
 date: 2026-04-18T21:04:35+08:00
 draft: false
 categories: ["技术"]

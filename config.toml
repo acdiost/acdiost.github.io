@@ -1,15 +1,25 @@
-baseURL = 'https://acdiost.github.io/'
+baseURL = 'https://www.acdiost.com/'
 locale = 'zh-Hans'
 title = 'Dawn`s Blog'
 theme = 'acdiost-theme'
 publishDir = './docs'
-cleanDestinationDir = true
+
+[build.cleanDestinationDir]
+enable = true
+
+[module.hugoVersion]
+min = '0.167.0'
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 4
 
 [pagination]
 pagerSize = 7
 
 [params]
 mainSections = ['posts']
+description = 'Dawn 的个人博客，记录技术实践、学习心得、职场与生活。'
 
 [taxonomies]
 category = 'categories'

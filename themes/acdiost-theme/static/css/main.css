@@ -1,6 +1,13 @@
 @tailwind base;
 
 @layer base {
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+        outline: 2px solid #7A5D00;
+        outline-offset: 4px;
+    }
+
     h1 {
         @apply text-4xl;
     }
@@ -33,6 +40,57 @@
 @tailwind components;
 
 @layer components {
+    .reading-container {
+        width: 100%;
+        max-width: 48rem;
+        padding: 1rem;
+        margin-inline: auto;
+    }
+
+    .home-list {
+        padding-block: 2rem;
+    }
+
+    .pagination {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-block: 2rem;
+        font-size: 0.875rem;
+    }
+
+    .pagination-link {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        color: #EACD76;
+        background: rgb(30 41 59);
+    }
+
+    .pagination-link:hover {
+        text-decoration: underline;
+    }
+
+    .article-toc {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        border: 1px solid rgb(234 205 118);
+        border-radius: 0.5rem;
+        background: rgb(254 249 195 / 0.4);
+    }
+
+    .article-toc summary {
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .article-toc a {
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+    }
+
     pre {
         white-space: pre-wrap;
         overflow-x: auto;
@@ -46,6 +104,10 @@
     .code-block-wrapper {
         position: relative;
         margin: 1em 0;
+    }
+
+    .code-block-wrapper pre {
+        padding-top: 3.5rem;
     }
 
     .code-copy-button {
@@ -73,6 +135,11 @@
         background: rgb(22 163 74 / 0.14);
         border-color: rgb(22 163 74 / 0.35);
         color: rgb(21 128 61);
+    }
+
+    .code-copy-button:disabled {
+        cursor: wait;
+        opacity: 0.7;
     }
 
     .article-content table {
@@ -138,6 +205,16 @@
     }
 }
 
+@media (min-width: 768px) {
+    .reading-container {
+        padding-inline: 2rem;
+    }
+
+    .home-list {
+        padding-block: 4rem;
+    }
+}
+
 @media (max-width: 768px) {
     .article-content table {
         font-size: 1rem;
@@ -150,8 +227,13 @@
 }
 
 @media print {
-    .code-copy-button {
+    .code-copy-button,
+    .article-toc {
         display: none;
+    }
+
+    .code-block-wrapper pre {
+        padding-top: 1em;
     }
 
     .article-content table {

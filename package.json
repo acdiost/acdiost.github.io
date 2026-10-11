@@ -1,0 +1,10 @@
+{
+  "name": "hugo-blog",
+  "private": true,
+  "scripts": {
+    "build:css": "npm --prefix themes/acdiost-theme run build:css",
+    "dev:css": "npm --prefix themes/acdiost-theme run dev:css",
+    "build": "npm run build:css && hugo --minify",
+    "dev": "hugo server -D --renderToMemory"
+  }
+}

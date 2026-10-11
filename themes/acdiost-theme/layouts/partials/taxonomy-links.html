@@ -1,0 +1,6 @@
+{{- range .GetTerms "categories" }}
+<a class="text-sm px-3 py-1 rounded bg-yellow-100 text-[#7A5D00] hover:underline" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+{{- end }}
+{{- range .GetTerms "tags" }}
+<a class="text-sm px-3 py-1 rounded bg-slate-100 text-slate-700 hover:underline" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+{{- end }}
